@@ -1,0 +1,11 @@
+{
+"build": {
+"env": {
+"NEXT_PRIVATE_DEBUG_CACHE": "false"
+}
+},
+"github": {
+"enabled": true
+}
+}
+

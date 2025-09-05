@@ -1,0 +1,17 @@
+full, production-ready Next.js project that renders 100% from your JSON, validates it with Zod, ships unit + E2E tests, and is wired for Vercel deploys (preview + production) with GitHub Actions.
+
+
+Essentials:
+Next.js App Router + TypeScript + React 18
+Tailwind (forms + typography) and shadcn/ui (Button) + lucide-react icons
+Strong Zod schema + runtime validation for your JSON (and TS types auto-derived)
+
+Optional
+Fully JSON-driven UI (Header, Hero, Problems grid, Whole-house, Drinking, Techniques, Distribution, Footer with contact form)
+Server Action (Edge) with simple token-bucket rate limit + Zod validation
+SEO: Metadata API, /api/og (OpenGraph card via @vercel/og), robots.txt, sitemap.xml
+Analytics & consent: Vercel Analytics + cookie banner (non-blocking)
+A11y: skip link, aria labels, axe check in Playwright E2E
+CI/CD: GitHub Actions for lint/test + Vercel preview and production deploys
+Husky pre-commit + lint-staged, ESLint + Prettier
+Sample content/site.json you can replace with your exact JSON
