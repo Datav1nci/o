@@ -16,6 +16,7 @@ return (
 <a href="#drinking" className="hover:text-gray-900 dark:hover:text-white">Eau potable</a>
 <a href="#techniques" className="hover:text-gray-900 dark:hover:text-white">Techniques</a>
 <a href="#distribution" className="hover:text-gray-900 dark:hover:text-white">Schéma</a>
+<a href="#problems" className="hover:text-gray-900 dark:hover:text-white">Problèmes</a>
 </nav>
 <Button as-child className="rounded-full">
 <a href="#contact">Contactez-nous</a>
