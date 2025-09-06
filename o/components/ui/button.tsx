@@ -1,46 +1,96 @@
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+'use client';
 
-const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ring-offset-white dark:ring-offset-gray-950",
-  {
-    variants: {
-      variant: {
-        default: "bg-blue-600 text-white hover:bg-blue-700",
-        outline:
-          "border border-gray-300 bg-transparent hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-900",
-        ghost: "bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900",
-      },
-      size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-lg px-3",
-        lg: "h-11 rounded-xl px-6",
-        icon: "h-10 w-10 p-0", // ✅ supports icon-only buttons
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+
+export default function Footer() {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'ok' | 'error'>('idle');
+  const [error, setError] = useState('');
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus('loading');
+    setError('');
+
+    const form = e.currentTarget;
+    const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim();
+    const hp = (form.elements.namedItem('hp') as HTMLInputElement)?.value ?? '';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ name, email, message, hp }),
+      });
+      if (!res.ok) throw new Error('Failed');
+      setStatus('ok');
+      form.reset();
+    } catch {
+      setStatus('error');
+      setError("Oups, une erreur s'est produite. Réessayez.");
+    }
   }
-);
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {}
+  return (
+    <footer
+      id="contact"
+      className="border-t border-gray-200 bg-gray-50 py-12 dark:border-gray-800 dark:bg-gray-950"
+    >
+      <div className="container mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 md:grid-cols-2">
+        <div>
+          <h2 className="mb-2 text-xl font-semibold">Parlons de votre eau</h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Dites-nous un mot sur votre besoin et nous vous recontactons rapidement.
+          </p>
+        </div>
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, ...props }, ref) => {
-    return (
-      <button
-        ref={ref}
-        className={cn(buttonVariants({ variant, size }), className)}
-        {...props}
-      />
-    );
-  }
-);
-Button.displayName = "Button";
+        <form onSubmit={onSubmit} className="grid gap-3" autoComplete="off">
+          {/* Honeypot (hidden but submittable) */}
+          <div className="sr-only" aria-hidden="true">
+            <label htmlFor="hp">Ne pas remplir</label>
+            <input id="hp" name="hp" type="text" tabIndex={-1} autoComplete="off" />
+          </div>
 
-export { Button, buttonVariants };
+          <input
+            name="name"
+            required
+            placeholder="Votre nom"
+            className="rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
+          />
+          <input
+            name="email"
+            type="email"
+            required
+            placeholder="Courriel"
+            className="rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
+          />
+          <textarea
+            name="message"
+            rows={4}
+            placeholder="Message"
+            className="rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
+          />
+
+          <div className="flex items-center gap-3">
+            <Button type="submit" disabled={status === 'loading'}>
+              {status === 'loading' ? 'Envoi…' : 'Envoyer'}
+            </Button>
+
+            {status === 'ok' && (
+              <span className="text-sm text-green-600">Merci ! On vous écrit vite.</span>
+            )}
+            {status === 'error' && (
+              <span className="text-sm text-red-600">{error || 'Oups, réessayez.'}</span>
+            )}
+          </div>
+        </form>
+      </div>
+
+      <div className="mt-8 text-center text-xs text-gray-500">
+        © {new Date().getFullYear()} Ö HOME
+      </div>
+    </footer>
+  );
+}
