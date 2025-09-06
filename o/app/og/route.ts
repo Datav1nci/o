@@ -1,4 +1,6 @@
+import React from 'react';
 import { ImageResponse } from 'next/og';
+import style from 'styles/global.css';
 
 export const runtime = 'edge';
 export const size = { width: 1200, height: 630 };
@@ -7,15 +9,17 @@ export const contentType = 'image/png';
 export function GET() {
   return new ImageResponse(
     (
-      <div style={{
-        display: 'flex',
-        height: '100%',
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: 'linear-gradient(135deg,#0ea5e9,#1d4ed8)',
-        color: 'white',
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          height: '100%',
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'linear-gradient(135deg,#0ea5e9,#1d4ed8)',
+          color: 'white',
+        }}
+      >
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
           <div style={{ fontSize: 56, fontWeight: 800 }}>Ö HOME</div>
           <div style={{ fontSize: 24, opacity: 0.9 }}>
@@ -24,6 +28,9 @@ export function GET() {
         </div>
       </div>
     ),
-    size
+    {
+      width: size.width,
+      height: size.height,
+    }
   );
 }
