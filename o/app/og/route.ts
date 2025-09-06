@@ -1,6 +1,5 @@
-import React from 'react';
+// app/og/route.tsx
 import { ImageResponse } from 'next/og';
-import style from 'styles/global.css';
 
 export const runtime = 'edge';
 export const size = { width: 1200, height: 630 };
@@ -28,9 +27,6 @@ export function GET() {
         </div>
       </div>
     ),
-    {
-      width: size.width,
-      height: size.height,
-    }
+    size
   );
 }
