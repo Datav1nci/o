@@ -94,3 +94,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export { Button, buttonVariants };

@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { Button } from './Button';
+import { Button, buttonVariants } from '@/components/ui/button';
+
 
 export default function Hero() {
   return (
