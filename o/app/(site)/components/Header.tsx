@@ -8,7 +8,7 @@ export default function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
-            src="/images/logo.png"   // ← STRING path from /public
+            src="/public/images/logo.png"   
             alt="Ö Home"
             width={40}
             height={40}
