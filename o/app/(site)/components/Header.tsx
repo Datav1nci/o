@@ -9,7 +9,7 @@ export default function Header() {
         {/* Logo — never shrink */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
-            src="./images/Logo.png"
+            src="./images/logo.png"
             alt="Ö Home"
             width={40}
             height={40}
