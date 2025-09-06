@@ -35,7 +35,7 @@ export default function Techniques() {
         {/* Image (right on desktop) */}
         <div className="flex justify-center order-1 lg:order-none">
           <Image
-            src="/images/techniques.png"
+            src="/images/techniques2.png"
             alt="Techniques de filtration utilisées"
             width={500}
             height={500}
