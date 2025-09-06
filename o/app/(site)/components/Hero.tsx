@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { Button, buttonVariants } from '@/components/ui/button';
-
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 export default function Hero() {
   return (
@@ -12,12 +12,18 @@ export default function Hero() {
         </h1>
 
         <div className="mt-6 flex gap-3">
-          <Button asChild className="rounded-full">
-            <a href="#whole-house">Toute la maison</a>
-          </Button>
-          <Button asChild variant="outline" className="rounded-full">
-            <a href="#drinking">Eau potable</a>
-          </Button>
+          <a
+            href="#whole-house"
+            className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}
+          >
+            Toute la maison
+          </a>
+          <a
+            href="#drinking"
+            className={cn(buttonVariants({ variant: 'outline' }), 'rounded-full')}
+          >
+            Eau potable
+          </a>
         </div>
 
         {/* Canada badge pinned bottom-left */}
@@ -25,7 +31,7 @@ export default function Hero() {
           <Image
             src="/images/CanadaDesign.png"
             alt="Canadian Design"
-            width={170}          // tweak to your preferred size
+            width={170}
             height={40}
             className="h-auto w-[150px] sm:w-[170px]"
             priority
