@@ -14,21 +14,30 @@ export default function DrinkingWater() {
             alt="Solution d’eau potable au point d’utilisation"
             width={500}
             height={500}
+            sizes="(min-width: 1024px) 500px, 80vw"
             className="rounded-xl shadow-md"
           />
         </div>
 
         {/* Right: Text */}
         <div>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-800">{"Système de filtration pour l’eau potable"}</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-800">
+            Système de filtration pour l’eau potable
+          </h2>
           <p className="mt-4 text-slate-600">
-            {"Pour une eau pure et saine au quotidien, Ö Home propose des systèmes de filtration pour l’eau potable. Nos solutions éliminent les impuretés pour vous offrir une eau idéale à boire et à cuisiner."}
+            Pour une eau pure et saine au quotidien, Ö Home propose des systèmes de
+            filtration pour l’eau potable. Nos solutions éliminent les impuretés pour vous
+            offrir une eau idéale à boire et à cuisiner.
           </p>
 
           <div className="mt-6">
             <a
               href="#contact"
-              className={cn(buttonVariants({ variant: 'default', size: 'default' }))}
+              aria-label="Nous contacter à propos du système de filtration pour l’eau potable"
+              className={cn(
+                buttonVariants({ variant: 'default', size: 'default' }),
+                'rounded-full'
+              )}
             >
               Solution eau potable
             </a>

@@ -7,16 +7,19 @@ export default function WholeHouse() {
   return (
     <section id="whole-house" className="container mx-auto px-4 py-20">
       <div className="grid items-center gap-12 lg:grid-cols-2">
+        {/* Illustration */}
         <div className="flex justify-center">
           <Image
             src="/images/whole-house.png"
             alt="Système de filtration pour toute la maison"
             width={500}
             height={500}
+            sizes="(min-width: 1024px) 500px, 80vw"
             className="rounded-xl shadow-md"
           />
         </div>
 
+        {/* Copy + CTA */}
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-slate-800">
             De l’eau filtrée pour toute la maison
@@ -30,7 +33,11 @@ export default function WholeHouse() {
           <div className="mt-6">
             <a
               href="#contact"
-              className={cn(buttonVariants({ variant: 'default', size: 'default' }))}
+              aria-label="Nous contacter à propos du filtre pour toute la maison"
+              className={cn(
+                buttonVariants({ variant: 'default', size: 'default' }),
+                'rounded-full'
+              )}
             >
               Filtre pour toute la maison
             </a>

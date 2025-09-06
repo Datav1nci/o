@@ -14,6 +14,7 @@ export default function Distribution() {
             alt="Schéma de distribution recommandé"
             width={500}
             height={500}
+            sizes="(min-width: 1024px) 500px, 80vw"
             className="rounded-xl shadow-md"
           />
         </div>
@@ -24,15 +25,20 @@ export default function Distribution() {
             Distribution des filtres par usage
           </h2>
           <p className="mt-4 text-slate-600">
-            Chaque point d’eau a ses besoins. Grâce à notre guide de placement, 
-            découvrez où installer chaque filtre pour une protection optimale. 
-            Que ce soit pour l’eau à boire, la douche ou la machine à laver, Ö Home propose une solution adaptée à chaque usage.
+            Chaque point d’eau a ses besoins. Grâce à notre guide de placement, découvrez où
+            installer chaque filtre pour une protection optimale. Que ce soit pour l’eau à
+            boire, la douche ou la machine à laver, Ö Home propose une solution adaptée à
+            chaque usage.
           </p>
 
           <div className="mt-6">
             <a
               href="#contact"
-              className={cn(buttonVariants({ variant: 'default', size: 'default' }))}
+              aria-label="Nous contacter à propos de l’implantation des filtres"
+              className={cn(
+                buttonVariants({ variant: 'default', size: 'default' }),
+                'rounded-full'
+              )}
             >
               Parler implantation
             </a>
