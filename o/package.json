@@ -1,1 +1,52 @@
-{"name":"nextjs-mvp-landing","version":"1.0.0","private":true,"description":"Static MVP landing page built with Next.js App Router, TypeScript, Tailwind, shadcn/ui Button, lucide-react icons, minimal SEO.","scripts":{"dev":"next dev -p 3000","build":"next build","start":"next start -p 3000","lint":"eslint .","format":"prettier --write .","typecheck":"tsc --noEmit","test":"vitest run","test:watch":"vitest","test:e2e":"playwright test","prepare":"git rev-parse --git-dir >/dev/null 2>&1 && husky || true"},"engines":{"node":">=18.18.0"},"dependencies":{"class-variance-authority":"^0.7.0","clsx":"^2.1.1","lucide-react":"^0.452.0","next":"^14.2.5","react":"^18.3.1","react-dom":"^18.3.1","tailwind-merge":"^2.3.0"},"devDependencies":{"@playwright/test":"^1.47.2","@tailwindcss/forms":"^0.5.7","@tailwindcss/typography":"^0.5.13","@testing-library/jest-dom":"^6.4.8","@testing-library/react":"^16.0.0","@testing-library/user-event":"^14.6.1","@types/node":"^20.12.12","@types/react":"^18.3.3","@types/react-dom":"^18.3.0","autoprefixer":"^10.4.20","eslint":"^8.57.0","eslint-config-next":"^14.2.5","husky":"^9.1.5","jsdom":"^24.1.0","lint-staged":"^15.2.7","postcss":"^8.4.41","prettier":"^3.3.3","tailwindcss":"^3.4.10","typescript":"^5.5.4","vitest":"^2.0.5"}}
+{
+  "name": "nextjs-mvp-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static MVP landing page built with Next.js App Router, TypeScript, Tailwind, shadcn/ui Button, lucide-react icons, minimal SEO.",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "prepare": "git rev-parse --git-dir >NUL 2>&1 && husky || echo husky skipped"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.452.0",
+    "next": "^14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.13",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.5",
+    "husky": "^9.1.5",
+    "jsdom": "^24.1.0",
+    "lint-staged": "^15.2.7",
+    "postcss": "^8.4.41",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}
