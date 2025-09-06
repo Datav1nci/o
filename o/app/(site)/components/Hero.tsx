@@ -12,10 +12,10 @@ Systèmes de filtration pour toute la maison et eau potable. Installation simple
 </p>
 <div className="mt-6 flex gap-3">
 <Button as-child className="rounded-full">
-<a href="#contact">Contactez-nous</a>
+<a href="#contact">Toute la maison</a>
 </Button>
 <Button as-child variant="outline" className="rounded-full">
-<a href="#techniques">Nos techniques</a>
+<a href="#techniques">Eau potable</a>
 </Button>
 </div>
 </div>
