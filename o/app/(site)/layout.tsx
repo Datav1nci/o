@@ -15,13 +15,13 @@ title: defaultTitle,
 description: defaultDescription,
 type: 'website',
 url: siteUrl,
-images: [{ url: '/api/og', width: 1200, height: 630 }]
+images: [{ url: '/og', width: 1200, height: 630 }]
 },
 twitter: {
 card: 'summary_large_image',
 title: defaultTitle,
 description: defaultDescription,
-images: ['/api/og']
+images: ['/og']
 },
 icons: { icon: [{ url: '/favicon.ico' }] }
 };
