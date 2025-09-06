@@ -4,8 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
-import { Button, buttonVariants } from '@/components/ui/button';
-
+import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 export default function Header() {
@@ -16,7 +15,14 @@ export default function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 shrink-0" onClick={close}>
-          <Image src="/images/logo2.png" alt="Ö Home" width={40} height={40} priority className="shrink-0" />
+          <Image
+            src="/images/logo2.png"
+            alt="Ö Home"
+            width={40}
+            height={40}
+            priority
+            className="shrink-0"
+          />
           <span className="sr-only">Ö Home</span>
         </Link>
 
@@ -27,7 +33,12 @@ export default function Header() {
           <a href="#drinking" className="hover:text-blue-700">Eau potable</a>
           <a href="#techniques" className="hover:text-blue-700">Techniques</a>
           <a href="#distribution" className="hover:text-blue-700">Schéma</a>
-          <a href="#contact" className="rounded-full bg-blue-800 px-4 py-2 font-medium text-white hover:bg-blue-700">Contactez-nous</a>
+          <a
+            href="#contact"
+            className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}
+          >
+            Contactez-nous
+          </a>
         </nav>
 
         {/* Mobile toggle */}
@@ -60,7 +71,13 @@ export default function Header() {
             <li><a href="#distribution" onClick={close} className="block hover:text-blue-700">Schéma</a></li>
           </ul>
           <div className="mt-4">
-            <a href="#contact" onClick={close} className={cn(buttonVariants(), 'w-full')}>Contactez-nous</a>
+            <a
+              href="#contact"
+              onClick={close}
+              className={cn(buttonVariants({ variant: 'default' }), 'w-full rounded-full')}
+            >
+              Contactez-nous
+            </a>
           </div>
         </div>
       </div>
