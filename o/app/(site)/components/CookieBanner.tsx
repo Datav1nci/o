@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { Button } from './Button';
+import { Button, buttonVariants } from '@/components/ui/button';
 
 
 const KEY = 'cookie-consent';
