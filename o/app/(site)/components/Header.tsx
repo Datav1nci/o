@@ -1,27 +1,48 @@
+// app/(site)/components/Header.tsx
 import Link from 'next/link';
-import Badge from './Badge';
-import { Button } from './Button';
-
+import Image from 'next/image';
 
 export default function Header() {
-return (
-<header className="sticky top-0 z-40 w-full border-b border-gray-200 bg-white/80 backdrop-blur dark:border-gray-800 dark:bg-gray-950/80">
-<div className="container mx-auto flex h-16 items-center justify-between px-4">
-<Link href="#" className="flex items-baseline gap-2 text-lg font-bold tracking-tight">
-<span>Ö HOME</span>
-<Badge>FILTRATION D’EAU</Badge>
-</Link>
-<nav className="hidden items-center gap-6 text-sm text-gray-700 md:flex dark:text-gray-300">
-<a href="#whole-house" className="hover:text-gray-900 dark:hover:text-white">Toute la maison</a>
-<a href="#drinking" className="hover:text-gray-900 dark:hover:text-white">Eau potable</a>
-<a href="#techniques" className="hover:text-gray-900 dark:hover:text-white">Techniques</a>
-<a href="#distribution" className="hover:text-gray-900 dark:hover:text-white">Schéma</a>
-<a href="#problems" className="hover:text-gray-900 dark:hover:text-white">Problèmes</a>
-</nav>
-<Button as-child className="rounded-full">
-<a href="#contact">Contactez-nous</a>
-</Button>
-</div>
-</header>
-);
+  return (
+    <header className="border-b bg-white">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+        {/* Left: Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/images/logo.png"
+            alt="Ö Home Filtration"
+            width={40}
+            height={40}
+            priority
+          />
+          <span className="sr-only">Ö Home</span>
+        </Link>
+
+        {/* Right: Nav */}
+        <nav className="flex items-center gap-6 text-sm font-medium text-gray-700">
+          <Link href="/" className="hover:text-blue-700">
+            Accueil
+          </Link>
+          <Link href="#whole-house" className="hover:text-blue-700">
+            Toute la maison
+          </Link>
+          <Link href="#drinking" className="hover:text-blue-700">
+            Eau potable
+          </Link>
+          <Link href="#techniques" className="hover:text-blue-700">
+            Techniques
+          </Link>
+          <Link href="#distribution" className="hover:text-blue-700">
+            Schéma
+          </Link>
+          <Link
+            href="#contact"
+            className="rounded-full bg-blue-800 px-4 py-2 text-white hover:bg-blue-700"
+          >
+            Contactez-nous
+          </Link>
+        </nav>
+      </div>
+    </header>
+  );
 }
