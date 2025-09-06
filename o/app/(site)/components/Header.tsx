@@ -9,7 +9,7 @@ export default function Header() {
         {/* Left: Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/images/logo.png"
+            src="/images/Logo.png"
             alt="Ö Home Filtration"
             width={40}
             height={40}
