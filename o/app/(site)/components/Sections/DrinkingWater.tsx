@@ -20,10 +20,10 @@ export default function DrinkingWater() {
 
         {/* Right: Text */}
         <div>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-800">Eau potable</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-800">Système de filtration pour l’eau potable</h2>
           <p className="mt-4 text-slate-600">
-            Goût pur et sécurité au point d’utilisation (cuisine). Options d’osmose inverse
-            et d’ultrafiltration adaptées à vos besoins pour une eau excellente au robinet.
+            Pour une eau pure et saine au quotidien, Ö Home propose des systèmes de filtration pour l’eau potable. 
+            Nos solutions éliminent les impuretés pour vous offrir une eau idéale à boire et à cuisiner.
           </p>
 
           <div className="mt-6">

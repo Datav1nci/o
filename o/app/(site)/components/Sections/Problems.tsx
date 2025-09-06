@@ -20,7 +20,7 @@ const items: Item[] = [
   },
   {
     title: 'Dureté',
-    desc: 'Le calcaire (Ca/Mg) abîme les tuyaux et les équipements.',
+    desc: 'Le calcaire de calcium et magnésium abîme les tuyaux.',
     src: '/images/problems/hardness.png',
     icon: Droplets,
   },
@@ -32,7 +32,7 @@ const items: Item[] = [
   },
   {
     title: 'Bactéries',
-    desc: 'Peuvent provoquer des maladies (p. ex. diarrhée).',
+    desc: 'Elles peuvent provoquer des maladies (p. ex. diarrhée).',
     src: '/images/problems/bacteria.png',
     icon: ShieldAlert,
   },

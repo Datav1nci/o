@@ -21,11 +21,12 @@ export default function Distribution() {
         {/* Text (right on desktop) */}
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-slate-800">
-            Schéma de distribution
+            Distribution des filtres par usage
           </h2>
           <p className="mt-4 text-slate-600">
-            Une vue claire de l’emplacement recommandé dans votre demeure : arrivée d’eau,
-            préfiltration, média principal et options point d’utilisation.
+            Chaque point d’eau a ses besoins. Grâce à notre guide de placement, 
+            découvrez où installer chaque filtre pour une protection optimale. 
+            Que ce soit pour l’eau à boire, la douche ou la machine à laver, Ö Home propose une solution adaptée à chaque usage.
           </p>
 
           <div className="mt-6">

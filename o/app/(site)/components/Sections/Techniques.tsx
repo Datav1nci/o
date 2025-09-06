@@ -9,18 +9,12 @@ export default function Techniques() {
       <div className="grid items-center gap-12 lg:grid-cols-2">
         {/* Text (left on desktop) */}
         <div>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-800">Techniques</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-800">Techniques utilisées</h2>
           <p className="mt-4 text-slate-600">
-            Nos configurations couvrent la majorité des besoins résidentiels avec des médias et
-            procédés éprouvés, sélectionnés pour votre eau et votre usage.
+            Chaque point d’eau a ses besoins. Grâce à notre guide de placement, découvrez où installer
+            chaque filtre pour une protection optimale. Que ce soit pour l’eau à boire, 
+            la douche ou la machine à laver, Ö Home propose une solution adaptée à chaque usage.
           </p>
-
-          <ul className="mt-6 space-y-2 text-slate-700">
-            <li>• Préfiltration sédiments multi-étages</li>
-            <li>• Charbon actif (déchloration, goûts/odeurs)</li>
-            <li>• Média anti-calcaire / adoucissement en option</li>
-            <li>• Osmose inverse au point d’utilisation</li>
-          </ul>
 
           <div className="mt-6">
             <a
