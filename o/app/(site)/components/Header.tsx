@@ -1,6 +1,7 @@
 // app/(site)/components/Header.tsx
 import Link from 'next/link';
 import Image from 'next/image';
+import logo from '@/public/images/logo.png'; 
 
 export default function Header() {
   return (
@@ -9,7 +10,7 @@ export default function Header() {
         {/* Logo — never shrink */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
-            src="/images/logo.png"
+            src={logo}            
             alt="Ö Home"
             width={40}
             height={40}
@@ -19,7 +20,6 @@ export default function Header() {
           <span className="sr-only">Ö Home</span>
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700">
           <a href="/" className="hover:text-blue-700">Accueil</a>
           <a href="#whole-house" className="hover:text-blue-700">Toute la maison</a>
@@ -34,7 +34,6 @@ export default function Header() {
           </a>
         </nav>
 
-        {/* Mobile CTA (optional) */}
         <a
           href="#contact"
           className="md:hidden rounded-full bg-blue-800 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
