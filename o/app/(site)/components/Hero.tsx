@@ -5,8 +5,8 @@ import { cn } from '@/lib/utils';
 export default function Hero() {
   return (
     <section className="container mx-auto grid max-w-5xl grid-cols-1 items-center gap-10 px-4 py-16 md:grid-cols-2">
-      {/* LEFT: text + buttons + bottom-left badge */}
-      <div className="relative">
+      {/* LEFT: text + buttons + badge */}
+      <div className="relative md:pb-0">
         <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl">
           {"De l'eau propre, simplifiée"}
         </h1>
@@ -26,8 +26,8 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Canada badge pinned bottom-left */}
-        <div className="pointer-events-none absolute left-0 -bottom-8 sm:bottom-0">
+        {/* Canada badge: in-flow on mobile, pinned on md+ */}
+        <div className="mt-8 md:mt-0 md:pointer-events-none md:absolute md:left-0 md:bottom-0">
           <Image
             src="/images/CanadaDesign.png"
             alt="Canadian Design"
