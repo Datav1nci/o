@@ -10,7 +10,7 @@ export default function DrinkingWater() {
         {/* Left: Image */}
         <div className="flex justify-center order-1 lg:order-none">
           <Image
-            src="/images/drinking.png"
+            src="/images/001 system.webp"
             alt="Solution d’eau potable au point d’utilisation"
             width={500}
             height={500}
