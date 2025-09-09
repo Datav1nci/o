@@ -10,7 +10,7 @@ export default function Distribution() {
         {/* Image (left on desktop) */}
         <div className="flex justify-center">
           <Image
-            src="/images/distribution.png"
+            src="/images/024 Distribution des filtres par usage.webp"
             alt="Schéma de distribution recommandé"
             width={500}
             height={500}
