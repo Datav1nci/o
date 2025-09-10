@@ -10,7 +10,7 @@ export default function WholeHouse() {
         {/* Illustration */}
         <div className="flex justify-center">
           <Image
-            src="/images/whole-house.png"
+            src="/images/whole_house.webp"
             alt="Système de filtration pour toute la maison"
             width={500}
             height={500}
