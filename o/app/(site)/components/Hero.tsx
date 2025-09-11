@@ -14,6 +14,10 @@ const heroImages = [
     src: "/images/Hero_second_image_anti_sediment.webp",
     alt: "Filtre anti-sédiment",
   },
+  {
+    src: "/images/hero_third_image_filtre_0_5_micron.webp",
+    alt: "Filtre anti-sédiment",
+  },
 ];
 
 export default function Hero() {
