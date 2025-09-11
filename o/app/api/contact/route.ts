@@ -1,9 +1,8 @@
-// app/api/contact/route.ts
 import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { Resend } from 'resend';
-import { env } from '@/lib/env';
+import { getEnv } from '@/lib/env';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -16,13 +15,9 @@ const BodySchema = z.object({
 });
 
 export async function POST(req: NextRequest) {
-  // 1) Parse & validate
-  let json: unknown;
-  try {
-    json = await req.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
-  }
+  // Parse & validate body
+  const json = await req.json().catch(() => null);
+  if (!json) return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
 
   const parsed = BodySchema.safeParse(json);
   if (!parsed.success) {
@@ -34,21 +29,23 @@ export async function POST(req: NextRequest) {
 
   const { name, email, message, hp } = parsed.data;
 
-  // 2) Honeypot: silently succeed to avoid tipping off bots
-  if (hp && hp.trim() !== '') {
-    return NextResponse.json({ ok: true });
+  // Honeypot: silently succeed
+  if (hp && hp.trim() !== '') return NextResponse.json({ ok: true });
+
+  // Load env at runtime (won’t crash build if missing)
+  const env = getEnv();
+  if (!env.ok) {
+    console.error('Missing email env vars:', env.issues);
+    return NextResponse.json({ error: 'Server not configured' }, { status: 500 });
   }
 
-  // 3) Basic meta for visibility (useful in the email and logs)
+  const resend = new Resend(env.RESEND_API_KEY);
+
   const meta = {
     ip: req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown',
     ua: req.headers.get('user-agent') ?? '',
     ts: new Date().toISOString(),
-    path: req.nextUrl.pathname,
   };
-
-  // 4) Send email via Resend (env is validated in lib/env.ts)
-  const resend = new Resend(env.RESEND_API_KEY);
 
   const subject = 'New contact form submission';
   const text = [
@@ -64,9 +61,9 @@ export async function POST(req: NextRequest) {
 
   try {
     await resend.emails.send({
-      from: env.CONTACT_FROM_EMAIL,            // e.g. contact@owater.ca (verified domain)
-      to: env.CONTACT_TO_EMAIL,                // single inbox (e.g. owater@gmail.com)
-      replyTo: email,                          // lets you "Reply" directly to the sender
+      from: env.CONTACT_FROM_EMAIL,  // e.g., contact@owater.ca (domain verified in Resend)
+      to: env.CONTACT_TO_EMAIL,      // e.g., owater@gmail.com
+      replyTo: email,
       subject,
       text,
     });
