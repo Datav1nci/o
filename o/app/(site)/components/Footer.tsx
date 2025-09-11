@@ -46,27 +46,53 @@ export default function Footer() {
           </p>
         </div>
 
-        <form onSubmit={onSubmit} className="grid gap-3" autoComplete="off">
+        <form
+          onSubmit={onSubmit}
+          className="grid gap-3"
+          autoComplete="on"
+          aria-busy={status === 'loading'}
+          aria-describedby="form-status"
+          noValidate
+        >
           {/* Honeypot (hidden but submittable) */}
           <div className="sr-only" aria-hidden="true">
             <label htmlFor="hp">Ne pas remplir</label>
             <input id="hp" name="hp" type="text" tabIndex={-1} autoComplete="off" />
           </div>
 
+          {/* Name */}
+          <label htmlFor="name" className="sr-only">
+            Nom
+          </label>
           <input
+            id="name"
             name="name"
             required
+            autoComplete="name"
             placeholder="Votre nom"
             className="rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
           />
+
+          {/* Email */}
+          <label htmlFor="email" className="sr-only">
+            Courriel
+          </label>
           <input
+            id="email"
             name="email"
             type="email"
             required
+            autoComplete="email"
             placeholder="Courriel"
             className="rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
           />
+
+          {/* Message */}
+          <label htmlFor="message" className="sr-only">
+            Message
+          </label>
           <textarea
+            id="message"
             name="message"
             rows={4}
             placeholder="Message"
@@ -77,14 +103,27 @@ export default function Footer() {
             <Button type="submit" disabled={status === 'loading'}>
               {status === 'loading' ? 'Envoi…' : 'Envoyer'}
             </Button>
-
-            {status === 'ok' && (
-              <span className="text-sm text-green-600">Merci ! On vous écrit vite.</span>
-            )}
-            {status === 'error' && (
-              <span className="text-sm text-red-600">{error || 'Oups, réessayez.'}</span>
-            )}
           </div>
+
+          {/* Live region for status updates (screen readers + visible text) */}
+          <p
+            id="form-status"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            className={
+              status === 'ok'
+                ? 'text-sm text-green-600 mt-2'
+                : status === 'error'
+                ? 'text-sm text-red-600 mt-2'
+                : 'text-sm text-gray-500 mt-2'
+            }
+          >
+            {status === 'ok' && 'Merci ! On vous écrit vite.'}
+            {status === 'error' && (error || 'Oups, réessayez.')}
+            {status === 'loading' && 'Envoi en cours…'}
+            {status === 'idle' && ''}
+          </p>
         </form>
       </div>
 
