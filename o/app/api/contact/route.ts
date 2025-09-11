@@ -2,6 +2,7 @@
 import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import nodemailer from 'nodemailer';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -13,10 +14,16 @@ const BodySchema = z.object({
   hp: z.string().optional().default(''), // honeypot
 });
 
+function jsonError(message: string, status = 500, debug?: unknown) {
+  // Log full details to server logs (Vercel → Logs → Functions)
+  console.error('[contact]', message, debug ?? '');
+  return NextResponse.json({ error: message }, { status });
+}
+
 export async function POST(req: NextRequest) {
-  // Parse & validate body
+  // 1) Parse & validate
   const json = await req.json().catch(() => null);
-  if (!json) return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+  if (!json) return jsonError('Invalid JSON', 400);
 
   const parsed = BodySchema.safeParse(json);
   if (!parsed.success) {
@@ -28,26 +35,25 @@ export async function POST(req: NextRequest) {
 
   const { name, email, message, hp } = parsed.data;
 
-  // Honeypot: silently succeed
+  // 2) Honeypot: silently succeed
   if (hp && hp.trim() !== '') return NextResponse.json({ ok: true });
 
-  // Read Gmail envs
-  const TO = process.env.CONTACT_TO_EMAIL;        // where you receive the lead
-  const USER = process.env.GMAIL_USER;            // e.g. owater@gmail.com
-  const PASS = process.env.GMAIL_APP_PASSWORD;    // 16-char app password
-
+  // 3) Read env
+  const TO = process.env.CONTACT_TO_EMAIL;        // recipient (your inbox)
+  const USER = process.env.GMAIL_USER;            // your gmail address
+  const PASS = process.env.GMAIL_APP_PASSWORD;    // 16-char app password (2FA required)
   if (!TO || !USER || !PASS) {
-    console.error('Missing Gmail envs', { hasTO: !!TO, hasUSER: !!USER, hasPASS: !!PASS });
-    return NextResponse.json({ error: 'Server not configured' }, { status: 500 });
+    return jsonError(
+      'Server not configured (missing CONTACT_TO_EMAIL / GMAIL_USER / GMAIL_APP_PASSWORD)'
+    );
   }
 
-  // Build email
+  // 4) Compose message
   const meta = {
     ip: req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown',
     ua: req.headers.get('user-agent') ?? '',
     ts: new Date().toISOString(),
   };
-
   const subject = 'New contact form submission';
   const text = [
     'New contact submission:',
@@ -60,16 +66,35 @@ export async function POST(req: NextRequest) {
     `At: ${meta.ts}`,
   ].join('\n');
 
+  // 5) Use explicit Gmail SMTP. Try 465 first, fallback to 587.
+  const smtp465 = {
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: { user: USER, pass: PASS },
+  } as const;
+
+  const smtp587 = {
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth: { user: USER, pass: PASS },
+  } as const;
+
   try {
-    // dynamic import so the build doesn’t fail if not installed locally
-    const nodemailer = await import('nodemailer');
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: { user: USER, pass: PASS },
-    });
+    let transporter = nodemailer.createTransport(smtp465);
+
+    // verify first to fail early with clearer errors
+    try {
+      await transporter.verify();
+    } catch (e1) {
+      console.warn('[contact] 465 verify failed, retrying on 587…', e1);
+      transporter = nodemailer.createTransport(smtp587);
+      await transporter.verify(); // throw if bad creds/network
+    }
 
     await transporter.sendMail({
-      from: `"Ö HOME" <${USER}>`,
+      from: `"Ö HOME" <${USER}>`, // must match authenticated account
       to: TO,
       replyTo: email,
       subject,
@@ -77,8 +102,13 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ ok: true });
-  } catch (err) {
-    console.error('Gmail send failed:', err);
-    return NextResponse.json({ error: 'Email send failed' }, { status: 502 });
+  } catch (err: any) {
+    // Bubble a concise reason to the client, full details in server logs.
+    // Common messages: 'Invalid login', 'Application-specific password required', 'getaddrinfo ENOTFOUND'
+    const msg =
+      typeof err?.message === 'string'
+        ? `Email send failed: ${err.message}`
+        : 'Email send failed';
+    return jsonError(msg, 502, err);
   }
 }
