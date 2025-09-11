@@ -37,7 +37,7 @@ export default function Hero() {
         */}
         <div className="mt-8">
           <Image
-            src="/images/CanadaDesign.png"
+            src="/images/Canada_Design.webp"
             alt="Canadian Design"
             width={170}
             height={40}
