@@ -50,7 +50,7 @@ export default function Hero() {
       {/* RIGHT: product/hero image */}
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gray-200 shadow-sm dark:border-gray-800">
         <Image
-          src="/images/filter_devices_hero.webp"
+          src="/images/Hero_first_image_carbon_filter.webp"
           alt="Appareil de filtration"
           fill
           priority
