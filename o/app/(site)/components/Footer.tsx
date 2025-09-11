@@ -3,9 +3,26 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
+type Status = 'idle' | 'loading' | 'ok' | 'error';
+
 export default function Footer() {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'ok' | 'error'>('idle');
+  const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<{ name?: string; email?: string }>({});
+
+  function validate(form: HTMLFormElement) {
+    const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+    const errs: typeof fieldErrors = {};
+
+    if (!name) errs.name = 'Votre nom est requis';
+    // very light email check (server will still validate strictly)
+    if (!email) errs.email = 'Votre courriel est requis';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = 'Courriel invalide';
+
+    setFieldErrors(errs);
+    return { ok: Object.keys(errs).length === 0, name, email };
+  }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -13,25 +30,52 @@ export default function Footer() {
     setError('');
 
     const form = e.currentTarget;
-    const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
-    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+
+    // client-side validation (since noValidate is set)
+    const v = validate(form);
+    if (!v.ok) {
+      setStatus('error');
+      setError('Veuillez corriger les champs en rouge.');
+      return;
+    }
+
     const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim();
     const hp = (form.elements.namedItem('hp') as HTMLInputElement)?.value ?? '';
+
+    // Abort after 15s to avoid stuck "loading"
+    const controller = new AbortController();
+    const t = setTimeout(() => controller.abort(), 15000);
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ name, email, message, hp }),
+        body: JSON.stringify({ name: v.name, email: v.email, message, hp }),
+        signal: controller.signal,
       });
-      if (!res.ok) throw new Error('Failed');
+
+      // try to read API error details; don’t throw away useful messages
+      const json = await res.json().catch(() => ({} as any));
+      if (!res.ok) {
+        throw new Error(json?.error || `HTTP ${res.status}`);
+      }
+
       setStatus('ok');
       form.reset();
-    } catch {
+      setFieldErrors({});
+    } catch (err: any) {
+      const msg =
+        err?.name === 'AbortError'
+          ? "Délai dépassé. Réessayez."
+          : err?.message || "Oups, une erreur s'est produite. Réessayez.";
       setStatus('error');
-      setError("Oups, une erreur s'est produite. Réessayez.");
+      setError(msg);
+    } finally {
+      clearTimeout(t);
     }
   }
+
+  const disabled = status === 'loading';
 
   return (
     <footer
@@ -50,7 +94,7 @@ export default function Footer() {
           onSubmit={onSubmit}
           className="grid gap-3"
           autoComplete="on"
-          aria-busy={status === 'loading'}
+          aria-busy={disabled}
           aria-describedby="form-status"
           noValidate
         >
@@ -60,47 +104,63 @@ export default function Footer() {
             <input id="hp" name="hp" type="text" tabIndex={-1} autoComplete="off" />
           </div>
 
-          {/* Name */}
-          <label htmlFor="name" className="sr-only">
-            Nom
-          </label>
-          <input
-            id="name"
-            name="name"
-            required
-            autoComplete="name"
-            placeholder="Votre nom"
-            className="rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
-          />
+          <fieldset disabled={disabled} className="grid gap-3">
+            {/* Name */}
+            <label htmlFor="name" className="sr-only">
+              Nom
+            </label>
+            <input
+              id="name"
+              name="name"
+              autoComplete="name"
+              placeholder="Votre nom"
+              aria-invalid={!!fieldErrors.name}
+              aria-describedby={fieldErrors.name ? 'err-name' : undefined}
+              className="rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
+            />
+            {fieldErrors.name && (
+              <p id="err-name" className="text-xs text-red-600 -mt-2">
+                {fieldErrors.name}
+              </p>
+            )}
 
-          {/* Email */}
-          <label htmlFor="email" className="sr-only">
-            Courriel
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            placeholder="Courriel"
-            className="rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
-          />
+            {/* Email */}
+            <label htmlFor="email" className="sr-only">
+              Courriel
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              inputMode="email"
+              autoCapitalize="off"
+              autoComplete="email"
+              placeholder="Courriel"
+              aria-invalid={!!fieldErrors.email}
+              aria-describedby={fieldErrors.email ? 'err-email' : undefined}
+              className="rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
+            />
+            {fieldErrors.email && (
+              <p id="err-email" className="text-xs text-red-600 -mt-2">
+                {fieldErrors.email}
+              </p>
+            )}
 
-          {/* Message */}
-          <label htmlFor="message" className="sr-only">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={4}
-            placeholder="Message"
-            className="rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
-          />
+            {/* Message */}
+            <label htmlFor="message" className="sr-only">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={4}
+              placeholder="Message"
+              className="rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
+            />
+          </fieldset>
 
           <div className="flex items-center gap-3">
-            <Button type="submit" disabled={status === 'loading'}>
+            <Button type="submit" disabled={disabled}>
               {status === 'loading' ? 'Envoi…' : 'Envoyer'}
             </Button>
           </div>
@@ -122,7 +182,6 @@ export default function Footer() {
             {status === 'ok' && 'Merci ! On vous écrit vite.'}
             {status === 'error' && (error || 'Oups, réessayez.')}
             {status === 'loading' && 'Envoi en cours…'}
-            {status === 'idle' && ''}
           </p>
         </form>
       </div>
