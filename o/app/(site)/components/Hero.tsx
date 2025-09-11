@@ -22,6 +22,10 @@ const heroImages = [
     src: "/images/Hero_section_trio_filters.webp",
     alt: "Filtre anti-sédiment",
   },
+  {
+    src: "/images/Hero_section_station_anti_calcaire.webp",
+    alt: "Filtre anti-sédiment",
+  },
 ];
 
 export default function Hero() {
