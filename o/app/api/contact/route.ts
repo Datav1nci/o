@@ -94,12 +94,14 @@ export async function POST(req: NextRequest) {
     }
 
     await transporter.sendMail({
-      from: `"Ö HOME" <${USER}>`, // must match authenticated account
-      to: TO,
-      replyTo: email,
+      from: `"Ö HOME" <${USER}>`, // must match authenticated Gmail
+      to: TO,                     // info@owater.ca (CONTACT_TO_EMAIL)
+      bcc: USER,                  // blind copy to datavvinci@gmail.com
+      replyTo: TO,                // replies go to info@owater.ca
       subject,
       text,
     });
+
 
     return NextResponse.json({ ok: true });
   } catch (err: any) {
