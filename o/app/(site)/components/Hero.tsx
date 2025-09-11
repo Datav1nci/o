@@ -26,13 +26,23 @@ export default function Hero() {
           </a>
         </div>
 
-  
+        {/* Canada badge: in-flow on mobile, pinned on md+ */}
+        <div className="mt-8 md:mt-0 md:pointer-events-none md:absolute md:left-0 md:bottom-0">
+          <Image
+            src="/images/CanadaDesign.png"
+            alt="Canadian Design"
+            width={170}
+            height={40}
+            className="h-auto w-[150px] sm:w-[170px]"
+            priority
+          />
+        </div>
       </div>
 
       {/* RIGHT: product/hero image */}
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gray-200 shadow-sm dark:border-gray-800">
         <Image
-          src="/images/filter-device.png"
+          src="/images/filter_devices_hero.webp"
           alt="Appareil de filtration"
           fill
           priority
