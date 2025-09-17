@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import Icon from './Icon';
+import { Icon } from './Icon';
 import {
   Instagram,
   Facebook,
