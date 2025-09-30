@@ -156,6 +156,12 @@ export default function Page() {
           eau toute sa pureté naturelle.
         </p>
 
+        <div className="mt-6 font-semibold">
+          <a href="/#techniques" className="inline-flex items-center gap-1 underline-offset-2 hover:underline">
+            Voir technologies utilisées <ChevronRight className="h-4 w-4" />
+          </a>
+        </div>
+
         <div className="mt-6 grid gap-6 sm:max-w-sm sm:grid-cols-1">
           <CardLink
             href="/#contact"
