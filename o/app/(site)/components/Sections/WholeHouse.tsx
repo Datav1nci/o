@@ -1,5 +1,6 @@
 // app/(site)/components/Sections/WholeHouse.tsx
 import Image from 'next/image';
+import Link from 'next/link'; 
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -31,16 +32,17 @@ export default function WholeHouse() {
           </p>
 
           <div className="mt-6">
-            <a
-              href="#contact"
-              aria-label="Nous contacter à propos du filtre pour toute la maison"
+             <Link
+              href="/filtre_pour_toute_la_maison" 
+              aria-label="Ouvrir la page filtre pour toute la maison"
               className={cn(
                 buttonVariants({ variant: 'default', size: 'default' }),
                 'rounded-full'
               )}
+              prefetch
             >
               Filtre pour toute la maison
-            </a>
+            </Link>
           </div>
         </div>
       </div>
