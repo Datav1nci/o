@@ -166,9 +166,7 @@ export default function MyNewPage() {
           Sédiments
         </h2>
         <p className="mt-3 max-w-4xl text-slate-700 dark:text-slate-300">
-          Ne laissez pas les particules en suspension (sable, rouille, boues) nuire à vos
-          installations. Une filtration sédimentaire protège la plomberie et améliore la
-          clarté de l’eau.
+          Ne laissez pas l’eau sale vous affecter. Vous buvez de l’eau même lorsque vous vous brossez les dents et que vous prenez un bain. Pouvez-vous imaginer que l’eau est sale, boueuse? Regardez de plus près, l’eau dans laquelle vous vous baignez a beaucoup d’impuretés, de la terre et de la saleté à la rouille sur les tuyaux, des algues stockées, et l’eau est remplie de particules en suspension.
         </p>
 
         <div className="mt-6 font-semibold">
@@ -205,8 +203,7 @@ export default function MyNewPage() {
           Chlore
         </h2>
         <p className="mt-3 max-w-4xl text-slate-700 dark:text-slate-300">
-          La réduction du chlore améliore le goût et l’odeur de l’eau, et protège les peaux
-          sensibles. Nos filtres au charbon actif se placent en point d’entrée ou d’usage.
+          Pas de soucis avec l’effet du chlore. Votre eau possède une odeur désagréable? Si l’odeur de l’eau est similaire à celle de l’eau de Javel, c’est parce que l’eau contient du chlore. L’eau municipale est généralement traitée au chlore, qui peut servir de désinfectant pour prévenir les maladies d’origine hydrique. Cependant, une chloration excessive peut donner à l’eau un goût et une odeur désagréables. Il provoque également une décoloration de la peau et une irritation des yeux.
         </p>
 
         <div className="mt-6 font-semibold">
@@ -231,8 +228,7 @@ export default function MyNewPage() {
           Bactéries
         </h2>
         <p className="mt-3 max-w-4xl text-slate-700 dark:text-slate-300">
-          Pour une eau sûre, des solutions UV ou membranes dédiées constituent une barrière
-          efficace contre les micro-organismes — sans produits chimiques.
+          Ne laissez pas les bactéries compromettre la qualité de votre eau. Invisibles à l’œil nu, elles peuvent pourtant provoquer des problèmes de santé, altérer le goût et l’odeur de l’eau et contaminer vos boissons et repas. Grâce à la technologie UV LED avancée, l’eau est stérilisée instantanément, éliminant jusqu’à 99,9 % des bactéries, virus et autres micro-organismes. Sans produits chimiques, cette solution est écologique, économique et conserve à votre eau toute sa pureté naturelle.
         </p>
 
         <div className="mt-6 font-semibold">
