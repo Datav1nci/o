@@ -1,5 +1,5 @@
 'use client';
-
+import { Droplet } from 'lucide-react';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -223,7 +223,7 @@ export default function Footer() {
         {/* RIGHT: logo, nav links, socials */}
         <div className="grid content-start gap-6 md:pl-6">
           <div className="flex items-center gap-3">
-            <Icon className="h-10 w-10" />
+            <Icon as={Droplet} className="h-10 w-10" />
             <div className="text-xl font-semibold leading-tight">
               Ö <span className="align-middle">HOME</span>
               <div className="text-xs font-normal text-gray-500">FILTRATION D’EAU</div>
