@@ -29,7 +29,17 @@ export default function Header() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700">
           <a href="/" className="hover:text-blue-700">Accueil</a>
-          <a href="#whole-house" className="hover:text-blue-700">Toute la maison</a>
+
+          {/* ⬇️ changed: go to the dedicated page */}
+          <Link
+            href="/filtre_pour_toute_la_maison"
+            prefetch
+            className="hover:text-blue-700"
+            onClick={close}
+          >
+            Toute la maison
+          </Link>
+
           <a href="#drinking" className="hover:text-blue-700">Eau potable</a>
           <a href="#techniques" className="hover:text-blue-700">Techniques</a>
           <a href="#distribution" className="hover:text-blue-700">Schéma</a>
@@ -65,7 +75,19 @@ export default function Header() {
         <div className="container mx-auto px-4 py-4">
           <ul className="space-y-3 text-gray-800">
             <li><a href="/" onClick={close} className="block hover:text-blue-700">Accueil</a></li>
-            <li><a href="#whole-house" onClick={close} className="block hover:text-blue-700">Toute la maison</a></li>
+
+            {/* ⬇️ changed: go to the dedicated page */}
+            <li>
+              <Link
+                href="/filtre_pour_toute_la_maison"
+                prefetch
+                onClick={close}
+                className="block hover:text-blue-700"
+              >
+                Toute la maison
+              </Link>
+            </li>
+
             <li><a href="#drinking" onClick={close} className="block hover:text-blue-700">Eau potable</a></li>
             <li><a href="#techniques" onClick={close} className="block hover:text-blue-700">Techniques</a></li>
             <li><a href="#distribution" onClick={close} className="block hover:text-blue-700">Schéma</a></li>
