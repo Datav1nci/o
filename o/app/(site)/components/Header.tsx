@@ -15,26 +15,66 @@ export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2 shrink-0" onClick={close}>
-          <Image src="/images/logo2.png" alt="Ö Home" width={40} height={40} priority className="shrink-0" />
+        <Link
+          href="/"
+          aria-label="Accueil Ö Home"
+          className="flex items-center gap-2 shrink-0"
+          onClick={close}
+        >
+          <Image
+            src="/images/logo2.png"
+            alt="Ö Home"
+            width={40}
+            height={40}
+            priority
+            className="shrink-0"
+          />
           <span className="sr-only">Ö Home</span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700">
-          <a href="/" className="hover:text-blue-700">Accueil</a>
-          <Link href="/filtre_pour_toute_la_maison" prefetch className="hover:text-blue-700" onClick={close}>
+        <nav
+          aria-label="Navigation principale"
+          className="hidden md:flex items-center gap-6 text-sm text-gray-700"
+        >
+          <Link href="/" className="hover:text-blue-700" onClick={close}>
+            Accueil
+          </Link>
+
+          <Link
+            href="/filtre_pour_toute_la_maison"
+            prefetch
+            className="hover:text-blue-700"
+            onClick={close}
+          >
             Filtre pour toute la maison
           </Link>
-          {/* ⬇️ renamed + routed */}
-          <Link href="/filtre_pour_eau_potable" prefetch className="hover:text-blue-700" onClick={close}>
+
+          <Link
+            href="/filtre_pour_eau_potable"
+            prefetch
+            className="hover:text-blue-700"
+            onClick={close}
+          >
             Filtre pour eau potable
           </Link>
-          <Link href="/techniques" className="hover:text-blue-700">Techniques</Link>
-          <a href="#distribution" className="hover:text-blue-700">Schéma</a>
-          <a href="/#contact" className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}>
+
+          <Link href="/techniques" className="hover:text-blue-700" onClick={close}>
+            Techniques
+          </Link>
+
+          {/* point to homepage anchor so it works from any page */}
+          <Link href="/#distribution" className="hover:text-blue-700" onClick={close}>
+            Schéma
+          </Link>
+
+          <Link
+            href="/#contact"
+            className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}
+            onClick={close}
+          >
             Contactez-nous
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile toggle */}
@@ -60,25 +100,56 @@ export default function Header() {
       >
         <div className="container mx-auto px-4 py-4">
           <ul className="space-y-3 text-gray-800">
-            <li><a href="/" onClick={close} className="block hover:text-blue-700">Accueil</a></li>
             <li>
-              <Link href="/filtre_pour_toute_la_maison" prefetch onClick={close} className="block hover:text-blue-700">
+              <Link href="/" onClick={close} className="block hover:text-blue-700">
+                Accueil
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/filtre_pour_toute_la_maison"
+                prefetch
+                onClick={close}
+                className="block hover:text-blue-700"
+              >
                 Filtre pour toute la maison
               </Link>
             </li>
-            {/* ⬇️ renamed + routed */}
+
             <li>
-              <Link href="/filtre_pour_eau_potable" prefetch onClick={close} className="block hover:text-blue-700">
+              <Link
+                href="/filtre_pour_eau_potable"
+                prefetch
+                onClick={close}
+                className="block hover:text-blue-700"
+              >
                 Filtre pour eau potable
               </Link>
             </li>
-            <li><Link href="/techniques" onClick={close} className="block hover:text-blue-700">Techniques</Link></li>
-            <li><a href="#distribution" onClick={close} className="block hover:text-blue-700">Schéma</a></li>
+
+            <li>
+              <Link href="/techniques" onClick={close} className="block hover:text-blue-700">
+                Techniques
+              </Link>
+            </li>
+
+            {/* homepage anchor for the diagram section */}
+            <li>
+              <Link href="/#distribution" onClick={close} className="block hover:text-blue-700">
+                Schéma
+              </Link>
+            </li>
           </ul>
+
           <div className="mt-4">
-            <a href="/#contact" onClick={close} className={cn(buttonVariants({ variant: 'default' }), 'w-full rounded-full')}>
+            <Link
+              href="/#contact"
+              onClick={close}
+              className={cn(buttonVariants({ variant: 'default' }), 'w-full rounded-full')}
+            >
               Contactez-nous
-            </a>
+            </Link>
           </div>
         </div>
       </div>
