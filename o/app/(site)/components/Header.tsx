@@ -69,7 +69,7 @@ export default function Header() {
           </Link>
 
           <Link
-            href="/#contact"
+            href="#contact"
             className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}
             onClick={close}
           >
@@ -144,7 +144,7 @@ export default function Header() {
 
           <div className="mt-4">
             <Link
-              href="/#contact"
+              href="#contact"
               onClick={close}
               className={cn(buttonVariants({ variant: 'default' }), 'w-full rounded-full')}
             >

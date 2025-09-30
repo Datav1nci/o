@@ -85,7 +85,9 @@ export default function Footer() {
   const disabled = status === 'loading';
 
   return (
-    <footer className="border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-950">
+    <footer
+      id="contact"
+      className="border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-950">
       {/* Top area: form + right column */}
       <div className="container mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-12 md:grid-cols-2">
         {/* LEFT: form */}
