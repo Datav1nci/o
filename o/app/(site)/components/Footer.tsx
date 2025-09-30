@@ -1,16 +1,11 @@
+// app/(site)/components/Footer.tsx
 'use client';
-import { Droplet } from 'lucide-react';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Icon } from './Icon';
-import {
-  Instagram,
-  Facebook,
-  Twitter,
-  Youtube,
-  MessageCircle,
-} from 'lucide-react';
+import { Droplet, Instagram, Facebook /*, MessageCircle, Twitter, Youtube */ } from 'lucide-react';
 
 type Status = 'idle' | 'loading' | 'ok' | 'error';
 
@@ -93,7 +88,7 @@ export default function Footer() {
     <footer className="border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-950">
       {/* Top area: form + right column */}
       <div className="container mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-12 md:grid-cols-2">
-        {/* LEFT: title + form */}
+        {/* LEFT: form */}
         <div>
           <h2 className="mb-3 text-2xl font-semibold">Contactez-nous</h2>
 
@@ -112,12 +107,10 @@ export default function Footer() {
             </div>
 
             <fieldset disabled={disabled} className="grid gap-4">
-              {/* Top row: Nom + Prénom */}
+              {/* Nom + Prénom */}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="lastName" className="sr-only">
-                    Nom
-                  </label>
+                  <label htmlFor="lastName" className="sr-only">Nom</label>
                   <input
                     id="lastName"
                     name="lastName"
@@ -128,16 +121,12 @@ export default function Footer() {
                     className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
                   />
                   {fieldErrors.lastName && (
-                    <p id="err-lastName" className="mt-1 text-xs text-red-600">
-                      {fieldErrors.lastName}
-                    </p>
+                    <p id="err-lastName" className="mt-1 text-xs text-red-600">{fieldErrors.lastName}</p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="firstName" className="sr-only">
-                    Prénom
-                  </label>
+                  <label htmlFor="firstName" className="sr-only">Prénom</label>
                   <input
                     id="firstName"
                     name="firstName"
@@ -148,18 +137,14 @@ export default function Footer() {
                     className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
                   />
                   {fieldErrors.firstName && (
-                    <p id="err-firstName" className="mt-1 text-xs text-red-600">
-                      {fieldErrors.firstName}
-                    </p>
+                    <p id="err-firstName" className="mt-1 text-xs text-red-600">{fieldErrors.firstName}</p>
                   )}
                 </div>
               </div>
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="sr-only">
-                  Email
-                </label>
+                <label htmlFor="email" className="sr-only">Email</label>
                 <input
                   id="email"
                   name="email"
@@ -173,17 +158,13 @@ export default function Footer() {
                   className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
                 />
                 {fieldErrors.email && (
-                  <p id="err-email" className="mt-1 text-xs text-red-600">
-                    {fieldErrors.email}
-                  </p>
+                  <p id="err-email" className="mt-1 text-xs text-red-600">{fieldErrors.email}</p>
                 )}
               </div>
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="sr-only">
-                  Message
-                </label>
+                <label htmlFor="message" className="sr-only">Message</label>
                 <textarea
                   id="message"
                   name="message"
@@ -220,7 +201,7 @@ export default function Footer() {
           </form>
         </div>
 
-        {/* RIGHT: logo, nav links, socials */}
+        {/* RIGHT: brand, nav links, socials */}
         <div className="grid content-start gap-6 md:pl-6">
           <div className="flex items-center gap-3">
             <Icon as={Droplet} className="h-10 w-10" />
@@ -230,44 +211,59 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Internal links should work from any page */}
           <nav className="grid gap-3 text-sm">
-            <Link href="#top" className="text-gray-700 hover:underline dark:text-gray-300">
-              Accueil
-            </Link>
-            <Link href="#whole-house" className="text-gray-700 hover:underline dark:text-gray-300">
+            <Link href="/" className="text-gray-700 hover:underline dark:text-gray-300">Accueil</Link>
+            <Link href="/filtre_pour_toute_la_maison" className="text-gray-700 hover:underline dark:text-gray-300">
               Filtre pour toute la maison
             </Link>
-            <Link href="#drinking" className="text-gray-700 hover:underline dark:text-gray-300">
+            <Link href="/filtre_pour_eau_potable" className="text-gray-700 hover:underline dark:text-gray-300">
               Filtre pour eau potable
             </Link>
-            <Link href="#techniques" className="text-gray-700 hover:underline dark:text-gray-300">
+            <Link href="/techniques" className="text-gray-700 hover:underline dark:text-gray-300">
               Techniques
             </Link>
-            <Link href="#schema" className="text-gray-700 hover:underline dark:text-gray-300">
+            <Link href="/#distribution" className="text-gray-700 hover:underline dark:text-gray-300">
               Schéma de placement
             </Link>
           </nav>
 
+          {/* Socials */}
           <div className="mt-2 flex items-center gap-4">
-            <Link aria-label="Instagram" href="#" className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400">
+            <a
+              aria-label="Instagram"
+              href="https://www.instagram.com/owatercanada?igsh=eXV4NWUzNmYyY3Iz&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400"
+            >
               <Instagram className="h-5 w-5" />
-            </Link>
-            <Link aria-label="Facebook" href="#" className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400">
+            </a>
+
+            <a
+              aria-label="Facebook"
+              href="https://www.facebook.com/share/1FBboSoGyh/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400"
+            >
               <Facebook className="h-5 w-5" />
-            </Link>
-            <Link aria-label="WhatsApp" href="#" className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400">
+            </a>
+
+            {/* Placeholder socials — keep commented until ready
+            <a aria-label="WhatsApp" href="#" className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400">
               <MessageCircle className="h-5 w-5" />
-            </Link>
-            <Link aria-label="TikTok" href="#" className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400">
-              {/* TikTok not in lucide; using Twitter icon as a placeholder if you like, or swap to a custom SVG */}
+            </a>
+            <a aria-label="TikTok" href="#" className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400">
               <Twitter className="h-5 w-5" />
-            </Link>
-            <Link aria-label="X" href="#" className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400">
+            </a>
+            <a aria-label="X" href="#" className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400">
               <Twitter className="h-5 w-5" />
-            </Link>
-            <Link aria-label="YouTube" href="#" className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400">
+            </a>
+            <a aria-label="YouTube" href="#" className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400">
               <Youtube className="h-5 w-5" />
-            </Link>
+            </a>
+            */}
           </div>
         </div>
       </div>
