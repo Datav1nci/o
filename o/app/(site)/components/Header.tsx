@@ -30,7 +30,7 @@ export default function Header() {
           <Link href="/filtre_pour_eau_potable" prefetch className="hover:text-blue-700" onClick={close}>
             Filtre pour eau potable
           </Link>
-          <a href="#techniques" className="hover:text-blue-700">Techniques</a>
+          <Link href="/techniques" className="hover:text-blue-700">Techniques</Link>
           <a href="#distribution" className="hover:text-blue-700">Schéma</a>
           <a href="/#contact" className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}>
             Contactez-nous
@@ -72,7 +72,7 @@ export default function Header() {
                 Filtre pour eau potable
               </Link>
             </li>
-            <li><a href="#techniques" onClick={close} className="block hover:text-blue-700">Techniques</a></li>
+            <li><Link href="/techniques" onClick={close} className="block hover:text-blue-700">Techniques</Link></li>
             <li><a href="#distribution" onClick={close} className="block hover:text-blue-700">Schéma</a></li>
           </ul>
           <div className="mt-4">
