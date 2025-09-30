@@ -63,13 +63,14 @@ export default function Header() {
             Techniques
           </Link>
 
-          {/* point to homepage anchor so it works from any page */}
-          <Link href="/#distribution" className="hover:text-blue-700" onClick={close}>
+          {/* now a dedicated page */}
+          <Link href="/schema" className="hover:text-blue-700" onClick={close}>
             Schéma
           </Link>
 
+          {/* always scrolls to the footer on the homepage */}
           <Link
-            href="#contact"
+            href="/#contact"
             className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}
             onClick={close}
           >
@@ -105,7 +106,6 @@ export default function Header() {
                 Accueil
               </Link>
             </li>
-
             <li>
               <Link
                 href="/filtre_pour_toute_la_maison"
@@ -116,7 +116,6 @@ export default function Header() {
                 Filtre pour toute la maison
               </Link>
             </li>
-
             <li>
               <Link
                 href="/filtre_pour_eau_potable"
@@ -127,16 +126,14 @@ export default function Header() {
                 Filtre pour eau potable
               </Link>
             </li>
-
             <li>
               <Link href="/techniques" onClick={close} className="block hover:text-blue-700">
                 Techniques
               </Link>
             </li>
-
-            {/* homepage anchor for the diagram section */}
+            {/* dedicated page */}
             <li>
-              <Link href="/#distribution" onClick={close} className="block hover:text-blue-700">
+              <Link href="/schema" onClick={close} className="block hover:text-blue-700">
                 Schéma
               </Link>
             </li>
@@ -144,7 +141,7 @@ export default function Header() {
 
           <div className="mt-4">
             <Link
-              href="#contact"
+              href="/#contact"
               onClick={close}
               className={cn(buttonVariants({ variant: 'default' }), 'w-full rounded-full')}
             >
