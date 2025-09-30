@@ -1,3 +1,4 @@
+// app/(site)/components/Header.tsx
 'use client';
 
 import { useState } from 'react';
@@ -15,38 +16,23 @@ export default function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 shrink-0" onClick={close}>
-          <Image
-            src="/images/logo2.png"
-            alt="Ö Home"
-            width={40}
-            height={40}
-            priority
-            className="shrink-0"
-          />
+          <Image src="/images/logo2.png" alt="Ö Home" width={40} height={40} priority className="shrink-0" />
           <span className="sr-only">Ö Home</span>
         </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700">
           <a href="/" className="hover:text-blue-700">Accueil</a>
-
-          {/* ⬇️ changed: go to the dedicated page */}
-          <Link
-            href="/filtre_pour_toute_la_maison"
-            prefetch
-            className="hover:text-blue-700"
-            onClick={close}
-          >
-            Toute la maison
+          <Link href="/filtre_pour_toute_la_maison" prefetch className="hover:text-blue-700" onClick={close}>
+            Filtre pour toute la maison
           </Link>
-
-          <a href="#drinking" className="hover:text-blue-700">Eau potable</a>
+          {/* ⬇️ renamed + routed */}
+          <Link href="/filtre_pour_eau_potable" prefetch className="hover:text-blue-700" onClick={close}>
+            Filtre pour eau potable
+          </Link>
           <a href="#techniques" className="hover:text-blue-700">Techniques</a>
           <a href="#distribution" className="hover:text-blue-700">Schéma</a>
-          <a
-            href="#contact"
-            className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}
-          >
+          <a href="/#contact" className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}>
             Contactez-nous
           </a>
         </nav>
@@ -64,7 +50,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile panel sits directly under the fixed header */}
+      {/* Mobile panel */}
       <div
         id="mobile-nav"
         className={cn(
@@ -75,29 +61,22 @@ export default function Header() {
         <div className="container mx-auto px-4 py-4">
           <ul className="space-y-3 text-gray-800">
             <li><a href="/" onClick={close} className="block hover:text-blue-700">Accueil</a></li>
-
-            {/* ⬇️ changed: go to the dedicated page */}
             <li>
-              <Link
-                href="/filtre_pour_toute_la_maison"
-                prefetch
-                onClick={close}
-                className="block hover:text-blue-700"
-              >
-                Toute la maison
+              <Link href="/filtre_pour_toute_la_maison" prefetch onClick={close} className="block hover:text-blue-700">
+                Filtre pour toute la maison
               </Link>
             </li>
-
-            <li><a href="#drinking" onClick={close} className="block hover:text-blue-700">Eau potable</a></li>
+            {/* ⬇️ renamed + routed */}
+            <li>
+              <Link href="/filtre_pour_eau_potable" prefetch onClick={close} className="block hover:text-blue-700">
+                Filtre pour eau potable
+              </Link>
+            </li>
             <li><a href="#techniques" onClick={close} className="block hover:text-blue-700">Techniques</a></li>
             <li><a href="#distribution" onClick={close} className="block hover:text-blue-700">Schéma</a></li>
           </ul>
           <div className="mt-4">
-            <a
-              href="#contact"
-              onClick={close}
-              className={cn(buttonVariants({ variant: 'default' }), 'w-full rounded-full')}
-            >
+            <a href="/#contact" onClick={close} className={cn(buttonVariants({ variant: 'default' }), 'w-full rounded-full')}>
               Contactez-nous
             </a>
           </div>
