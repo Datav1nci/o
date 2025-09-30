@@ -5,18 +5,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Icon } from './Icon';
-import { Droplet, Instagram, Facebook /*, MessageCircle, Twitter, Youtube */ } from 'lucide-react';
+import { Droplet, Instagram, Facebook /* MessageCircle, Twitter, Youtube */ } from 'lucide-react';
 
 type Status = 'idle' | 'loading' | 'ok' | 'error';
 
 export default function Footer() {
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState('');
-  const [fieldErrors, setFieldErrors] = useState<{
-    lastName?: string;
-    firstName?: string;
-    email?: string;
-  }>({});
+  const [fieldErrors, setFieldErrors] = useState<{ lastName?: string; firstName?: string; email?: string }>({});
 
   function validate(form: HTMLFormElement) {
     const lastName = (form.elements.namedItem('lastName') as HTMLInputElement).value.trim();
@@ -30,11 +26,7 @@ export default function Footer() {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = 'Courriel invalide';
 
     setFieldErrors(errs);
-    return {
-      ok: Object.keys(errs).length === 0,
-      name: [firstName, lastName].filter(Boolean).join(' '),
-      email,
-    };
+    return { ok: Object.keys(errs).length === 0, name: [firstName, lastName].filter(Boolean).join(' '), email };
   }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -71,10 +63,7 @@ export default function Footer() {
       form.reset();
       setFieldErrors({});
     } catch (err: any) {
-      const msg =
-        err?.name === 'AbortError'
-          ? 'Délai dépassé. Réessayez.'
-          : err?.message || "Oups, une erreur s'est produite. Réessayez.";
+      const msg = err?.name === 'AbortError' ? 'Délai dépassé. Réessayez.' : err?.message || "Oups, une erreur s'est produite. Réessayez.";
       setStatus('error');
       setError(msg);
     } finally {
@@ -87,21 +76,15 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-950">
+      className="scroll-mt-24 border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-950"
+    >
       {/* Top area: form + right column */}
       <div className="container mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-12 md:grid-cols-2">
         {/* LEFT: form */}
         <div>
           <h2 className="mb-3 text-2xl font-semibold">Contactez-nous</h2>
 
-          <form
-            onSubmit={onSubmit}
-            className="grid gap-4"
-            autoComplete="on"
-            aria-busy={disabled}
-            aria-describedby="form-status"
-            noValidate
-          >
+          <form onSubmit={onSubmit} className="grid gap-4" autoComplete="on" aria-busy={disabled} aria-describedby="form-status" noValidate>
             {/* Honeypot */}
             <div className="sr-only" aria-hidden="true">
               <label htmlFor="hp">Ne pas remplir</label>
@@ -122,9 +105,7 @@ export default function Footer() {
                     aria-describedby={fieldErrors.lastName ? 'err-lastName' : undefined}
                     className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
                   />
-                  {fieldErrors.lastName && (
-                    <p id="err-lastName" className="mt-1 text-xs text-red-600">{fieldErrors.lastName}</p>
-                  )}
+                  {fieldErrors.lastName && <p id="err-lastName" className="mt-1 text-xs text-red-600">{fieldErrors.lastName}</p>}
                 </div>
 
                 <div>
@@ -138,9 +119,7 @@ export default function Footer() {
                     aria-describedby={fieldErrors.firstName ? 'err-firstName' : undefined}
                     className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
                   />
-                  {fieldErrors.firstName && (
-                    <p id="err-firstName" className="mt-1 text-xs text-red-600">{fieldErrors.firstName}</p>
-                  )}
+                  {fieldErrors.firstName && <p id="err-firstName" className="mt-1 text-xs text-red-600">{fieldErrors.firstName}</p>}
                 </div>
               </div>
 
@@ -159,9 +138,7 @@ export default function Footer() {
                   aria-describedby={fieldErrors.email ? 'err-email' : undefined}
                   className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 outline-none focus:border-blue-500"
                 />
-                {fieldErrors.email && (
-                  <p id="err-email" className="mt-1 text-xs text-red-600">{fieldErrors.email}</p>
-                )}
+                {fieldErrors.email && <p id="err-email" className="mt-1 text-xs text-red-600">{fieldErrors.email}</p>}
               </div>
 
               {/* Message */}
@@ -188,13 +165,7 @@ export default function Footer() {
               role="status"
               aria-live="polite"
               aria-atomic="true"
-              className={
-                status === 'ok'
-                  ? 'mt-1 text-sm text-green-600'
-                  : status === 'error'
-                  ? 'mt-1 text-sm text-red-600'
-                  : 'mt-1 text-sm text-gray-500'
-              }
+              className={status === 'ok' ? 'mt-1 text-sm text-green-600' : status === 'error' ? 'mt-1 text-sm text-red-600' : 'mt-1 text-sm text-gray-500'}
             >
               {status === 'ok' && 'Merci ! On vous écrit vite.'}
               {status === 'error' && (error || 'Oups, réessayez.')}
@@ -213,7 +184,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Internal links should work from any page */}
+          {/* Internal links */}
           <nav className="grid gap-3 text-sm">
             <Link href="/" className="text-gray-700 hover:underline dark:text-gray-300">Accueil</Link>
             <Link href="/filtre_pour_toute_la_maison" className="text-gray-700 hover:underline dark:text-gray-300">
@@ -225,7 +196,8 @@ export default function Footer() {
             <Link href="/techniques" className="text-gray-700 hover:underline dark:text-gray-300">
               Techniques
             </Link>
-            <Link href="/#distribution" className="text-gray-700 hover:underline dark:text-gray-300">
+            {/* ✅ route to the new page */}
+            <Link href="/schema" className="text-gray-700 hover:underline dark:text-gray-300">
               Schéma de placement
             </Link>
           </nav>
@@ -252,7 +224,7 @@ export default function Footer() {
               <Facebook className="h-5 w-5" />
             </a>
 
-            {/* Placeholder socials — keep commented until ready
+            {/*
             <a aria-label="WhatsApp" href="#" className="rounded-full p-2 ring-1 ring-gray-300 hover:ring-gray-400">
               <MessageCircle className="h-5 w-5" />
             </a>
