@@ -193,7 +193,7 @@ export default function Page() {
 
       {/* Bottom CTA (scroll on this page) */}
       <section className="mt-12">
-        <a href="#contact" className={cn(buttonVariants({ variant: "default" }), "rounded-full"))}>
+        <a href="#contact" className={cn(buttonVariants({ variant: "default" }), "rounded-full")}>
           Parler à un spécialiste
         </a>
       </section>
