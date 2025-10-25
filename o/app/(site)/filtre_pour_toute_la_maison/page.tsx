@@ -124,18 +124,18 @@ export default function Page() {
         </div>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {/* ➜ now opens a dedicated page */}
+          {/* Ö Energie already implemented */}
           <CardLink
             href="/filtre_pour_toute_la_maison/energie"
             title="Ö Energie"
             img="/images/distribution.png"
             alt="Solution dureté Ö Énergie"
           />
-          {/* keep other links as-is for now; we can add their pages later */}
+          {/* UPDATED: link now points to the new page */}
           <CardLink
-            href="/#contact"
+            href="/filtre_pour_toute_la_maison/nu-blend"
             title="Nü Blend"
-            img="/images/drinking.png"
+            img="/images/filter_devices_hero.webp"
             alt="Solution dureté Nü Blend"
           />
           <CardLink
