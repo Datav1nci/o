@@ -225,7 +225,7 @@ export default function Page() {
 
         <div className="mt-6 grid gap-6 sm:max-w-sm sm:grid-cols-1">
           <CardLink
-            href="/#contact"
+            href="/filtre_pour_toute_la_maison/le-grand"
             title="Le Grand"
             img="/images/drinking.png"
             alt="Station anti-goûts et odeurs"
