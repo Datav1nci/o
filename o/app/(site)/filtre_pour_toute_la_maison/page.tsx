@@ -154,7 +154,7 @@ export default function Page() {
             alt="Douche anti-calcaire"
           />
           <CardLink
-            href="/#contact"
+            href="/filtre_pour_toute_la_maison/o-adoucisseur"
             title="Ö Adoucisseur"
             img="/images/distribution.png"
             alt="Adoucisseur d’eau"
