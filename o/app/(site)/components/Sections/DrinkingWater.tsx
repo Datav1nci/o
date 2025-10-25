@@ -32,7 +32,7 @@ export default function DrinkingWater() {
 
           <div className="mt-6">
             <a
-              href="#contact"
+              href="/filtre_pour_eau_potable"
               aria-label="Nous contacter à propos du système de filtration pour l’eau potable"
               className={cn(
                 buttonVariants({ variant: 'default', size: 'default' }),
