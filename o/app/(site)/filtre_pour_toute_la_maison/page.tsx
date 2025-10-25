@@ -139,7 +139,7 @@ export default function Page() {
             alt="Solution dureté Nü Blend"
           />
           <CardLink
-            href="/#contact"
+            href="/filtre_pour_toute_la_maison/o-solaire"
             title="Ö Solaire"
             img="/images/distribution.png"
             alt="Solution dureté Ö Solaire"
