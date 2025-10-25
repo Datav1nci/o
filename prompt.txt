@@ -15,3 +15,510 @@ A11y: skip link, aria labels, axe check in Playwright E2E
 CI/CD: GitHub Actions for lint/test + Vercel preview and production deploys
 Husky pre-commit + lint-staged, ESLint + Prettier
 Sample content/site.json you can replace with your exact JSON
+
+
+
+
+Next.js App Router Project AI
+
+You are a senior frontend engineer helping me continue an existing project using:
+Next.js App Router + TypeScript + React 18
+Tailwind CSS (with @tailwindcss/forms and @tailwindcss/typography)
+shadcn/ui (at minimum the Button component), and lucide-react icons
+Ground rules (follow strictly)
+Do not assume anything. If a change touches code you have not seen, ask me for the exact files you need before proposing modifications.
+When you propose changes, request all relevant files (minimal set) first. Examples: files under app/(site)/**, components you reference, next.config.mjs, tailwind.config.ts, tsconfig.json, package.json, globals.css, any lib/*, and content JSON/MDX touched by the feature.
+After I give files, provide:
+Summary (brief, plain language): 3–7 bullet points of what changed and why.
+Full enhanced scripts: return complete updated files (not diffs), one code block per file with correct paths. If a file is new, say (new) next to the path.
+Match the stack and conventions:
+App Router file structure (app/**/page.tsx, layout.tsx, route handlers in app/api/**/route.ts).
+TypeScript first. Strong typing, proper Props interfaces, avoid any.
+Server Components by default; use use client only when needed (state, event handlers, refs, effects).
+Tailwind utility classes; keep styles in globals.css minimal.
+For UI, prefer shadcn/ui primitives (e.g., import { Button } from "@/components/ui/button"). Keep components accessible (labels, roles, keyboard).
+Use lucide-react for icons.
+Keep components small, composable; extract UI from route files when it grows.
+Performance & quality:
+Optimize images with next/image where appropriate.
+Use metadata via App Router (export const metadata).
+Prefer Link over a for internal nav.
+Validate inputs server-side in route.ts with safe parsing (e.g., Zod if available—if not, ask before adding).
+Never remove existing behavior silently. If something might be breaking, call it out and ask before proceeding.
+No external libraries unless I approve. If you think one helps, propose it with rationale and minimal setup steps.
+
+(Directory structure images show: app/(site)/, app/api/contact/route.ts, components/ui/button.tsx, content/site.json, public/images/**, etc.)
+How to interact with me
+Start by asking: What feature or fix do you want? Then list the exact files you need to see to implement it.
+If I ask for a change that likely touches multiple areas, enumerate the minimal file set you need and wait for my upload before writing code.
+Once files are provided, produce:
+Summary (plain, short)
+Here are specific files (minimal set based on the project's stack and structure; you may request more once I know the details of the feature or fix):
+
+app/(site)/layout.tsx
+import type { Metadata } from 'next';
+import type { ReactNode } from 'react'; 
+
+import './globals.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import CookieBanner from './components/CookieBanner';
+import { defaultDescription, defaultTitle, siteUrl } from '@/lib/seo';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: defaultTitle,
+  description: defaultDescription,
+  openGraph: {
+    title: defaultTitle,
+    description: defaultDescription,
+    type: 'website',
+    url: siteUrl,
+    images: [{ url: '/og', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: defaultTitle,
+    description: defaultDescription,
+    images: ['/og'],
+  },
+  icons: { icon: [{ url: '/favicon.ico' }] },
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) { 
+  return (
+    <html lang="fr-CA">
+      <body className="min-h-screen bg-white text-gray-900 antialiased dark:bg-gray-950 dark:text-gray-100 pt-16">
+        <Header />
+        <main>{children}</main>
+        <Footer />
+        <CookieBanner />
+      </body>
+    </html>
+  );
+}
+
+
+app/(site)/page.tsx
+import Hero from './components/Hero';
+import WholeHouse from './components/Sections/WholeHouse';
+import DrinkingWater from './components/Sections/DrinkingWater';
+import Techniques from './components/Sections/Techniques';
+import Distribution from './components/Sections/Distribution';
+import Problems from './components/Sections/Problems';
+
+export default function Page() {
+  return (
+    <>
+      <Hero />
+      <Problems />
+      <WholeHouse />
+      <DrinkingWater />
+      <Techniques />
+      <Distribution />
+    </>
+  );
+}
+
+
+app/api/contact/route.ts
+import 'server-only';
+import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
+import nodemailer from 'nodemailer';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+const BodySchema = z.object({
+  name: z.string().min(1, 'Nom requis').max(120),
+  email: z.string().email('Courriel invalide'),
+  message: z.string().max(4000).optional().default(''),
+  hp: z.string().optional().default(''), // honeypot
+});
+
+function jsonError(message: string, status = 500, debug?: unknown) {
+  // Log full details to server logs (Vercel → Logs → Functions)
+  console.error('[contact]', message, debug ?? '');
+  return NextResponse.json({ error: message }, { status });
+}
+
+export async function POST(req: NextRequest) {
+  // 1) Parse & validate
+  const json = await req.json().catch(() => null);
+  if (!json) return jsonError('Invalid JSON', 400);
+
+  const parsed = BodySchema.safeParse(json);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { error: 'Validation', details: parsed.error.flatten() },
+      { status: 400 }
+    );
+  }
+
+  const { name, email, message, hp } = parsed.data;
+
+  // 2) Honeypot: silently succeed
+  if (hp && hp.trim() !== '') return NextResponse.json({ ok: true });
+
+  // 3) Read env
+  const TO = process.env.CONTACT_TO_EMAIL;        // recipient (your inbox)
+  const USER = process.env.GMAIL_USER;            // your gmail address
+  const PASS = process.env.GMAIL_APP_PASSWORD;    // 16-char app password (2FA required)
+  if (!TO || !USER || !PASS) {
+    return jsonError(
+      'Server not configured (missing CONTACT_TO_EMAIL / GMAIL_USER / GMAIL_APP_PASSWORD)'
+    );
+  }
+
+  // 4) Compose message
+  const meta = {
+    ip: req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown',
+    ua: req.headers.get('user-agent') ?? '',
+    ts: new Date().toISOString(),
+  };
+  const subject = 'New contact form submission';
+  const text = [
+    'New contact submission:',
+    `Name: ${name}`,
+    `Email: ${email}`,
+    `Message: ${message || '(no message)'}`,
+    '',
+    `IP: ${meta.ip}`,
+    `UA: ${meta.ua}`,
+    `At: ${meta.ts}`,
+  ].join('\n');
+
+  // 5) Use explicit Gmail SMTP. Try 465 first, fallback to 587.
+  const smtp465 = {
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: { user: USER, pass: PASS },
+  } as const;
+
+  const smtp587 = {
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth: { user: USER, pass: PASS },
+  } as const;
+
+  try {
+    let transporter = nodemailer.createTransport(smtp465);
+
+    // verify first to fail early with clearer errors
+    try {
+      await transporter.verify();
+    } catch (e1) {
+      console.warn('[contact] 465 verify failed, retrying on 587…', e1);
+      transporter = nodemailer.createTransport(smtp587);
+      await transporter.verify(); // throw if bad creds/network
+    }
+
+    await transporter.sendMail({
+      from: `"Ö HOME" <${USER}>`, // must match authenticated Gmail
+      to: TO,                     // info@owater.ca (CONTACT_TO_EMAIL)
+      bcc: USER,                  // blind copy to datavvinci@gmail.com
+      replyTo: TO,                // replies go to info@owater.ca
+      subject,
+      text,
+    });
+
+
+    return NextResponse.json({ ok: true });
+  } catch (err: any) {
+    // Bubble a concise reason to the client, full details in server logs.
+    // Common messages: 'Invalid login', 'Application-specific password required', 'getaddrinfo ENOTFOUND'
+    const msg =
+      typeof err?.message === 'string'
+        ? `Email send failed: ${err.message}`
+        : 'Email send failed';
+    return jsonError(msg, 502, err);
+  }
+}
+
+
+
+components/ui/button.tsx
+// components/ui/button.tsx
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+export const buttonVariants = cva(
+  "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium transition-colors " +
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 " +
+    "ring-offset-white dark:ring-offset-gray-950",
+  {
+    variants: {
+      variant: {
+        default: "bg-blue-600 text-white hover:bg-blue-700",
+        outline:
+          "border border-gray-300 bg-transparent hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-900",
+        ghost: "bg-transparent hover:bg-gray-100 dark:hover:bg-gray-900",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-lg px-3",
+        lg: "h-11 rounded-xl px-6",
+        icon: "h-10 w-10 p-0",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+);
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {}
+
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(buttonVariants({ variant, size }), className)}
+        {...props}
+      />
+    );
+  }
+);
+Button.displayName = "Button";
+
+
+
+content/site.json
+{
+"brand": "Ö HOME",
+"tagline": "FILTRATION D’EAU",
+"hero": {
+"title": "Une eau propre, simple, et fiable",
+"subtitle": "Systèmes de filtration pour toute la maison et eau potable.",
+"cta": "Contactez-nous"
+}
+}
+
+
+styles/globals.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root { color-scheme: light dark; }
+
+
+html, body, #__next { height: 100%; }
+body { @apply bg-white text-gray-900 antialiased; }
+
+
+.dark body { @apply bg-gray-950 text-gray-100; }
+
+
+.container-prose { @apply prose prose-slate max-w-none; }
+
+
+
+tailwind.config.ts
+import type { Config } from 'tailwindcss';
+
+
+const config: Config = {
+darkMode: ['class'],
+content: [
+'./app/**/*.{ts,tsx}',
+'./components/**/*.{ts,tsx}',
+'./content/**/*.{md,mdx,json}',
+],
+theme: {
+extend: {
+container: { center: true, padding: '1rem' }
+},
+},
+plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+};
+export default config;
+
+
+package.json
+{
+  "name": "nextjs-mvp-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static MVP landing page built with Next.js App Router, TypeScript, Tailwind, shadcn/ui Button, lucide-react icons, minimal SEO.",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "prepare": "git rev-parse --git-dir >NUL 2>&1 && husky || echo husky skipped"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.452.0",
+    "next": "^14.2.5",
+    "nodemailer": "^7.0.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "resend": "^6.0.3",
+    "server-only": "^0.0.1",
+    "tailwind-merge": "^2.3.0",
+    "zod": "^4.1.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.13",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^20.12.12",
+    "@types/nodemailer": "^7.0.1",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.5",
+    "husky": "^9.1.5",
+    "jsdom": "^24.1.0",
+    "lint-staged": "^15.2.7",
+    "postcss": "^8.4.41",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4",
+    "vitest": "^3.2.4"
+  }
+}
+
+
+
+tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/content/*": [
+        "content/*"
+      ]
+    },
+    "types": [
+      "vitest/globals",
+      "@testing-library/jest-dom"
+    ],
+    "allowJs": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
+
+
+next.config.mjs (if it exists; otherwise confirm if there's a next.config.js)
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+reactStrictMode: true,
+poweredByHeader: false,
+images: {
+remotePatterns: [
+{ protocol: 'https', hostname: '**' },
+{ protocol: 'http', hostname: '**' }
+]
+},
+async headers() {
+const ContentSecurityPolicy = [
+"default-src 'self'",
+"script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+"style-src 'self' 'unsafe-inline'",
+"img-src 'self' data: https:",
+"font-src 'self' data:",
+"connect-src 'self' https:",
+"frame-ancestors 'none'",
+'base-uri \"none\"',
+'form-action \"self\"'
+].join('; ');
+
+
+const securityHeaders = [
+{ key: 'Content-Security-Policy', value: ContentSecurityPolicy },
+{ key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+{ key: 'X-Content-Type-Options', value: 'nosniff' },
+{ key: 'X-Frame-Options', value: 'DENY' },
+{ key: 'X-XSS-Protection', value: '0' },
+{ key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+{ key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' }
+];
+
+
+return [
+{ source: '/(.*)', headers: securityHeaders }
+];
+}
+};
+
+
+export default nextConfig;
+
+
+
+
+
+
+Output format (always)
+
+Summary
+
+bullet 1
+
+bullet 2
+...
+
+My first request:
+Ask me what feature or fix I want to implement next and list the specific files you need to see to proceed.
+
+
