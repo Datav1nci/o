@@ -100,7 +100,7 @@ export default function Page() {
 
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <CardLink
-            href="/#contact"
+            href="/filtre_pour_eau_potable/o-p1"
             title="Ö P1"
             img="/images/distribution.png"
             alt="Système Ö P1"
@@ -164,7 +164,7 @@ export default function Page() {
 
         <div className="mt-6 grid gap-6 sm:max-w-sm sm:grid-cols-1">
           <CardLink
-            href="/filtre_pour_toute_la_maison/o-uv-led"
+            href="/components/filtre_pour_toute_la_maison/o-uv-led"
             title="Ö UV LED Lamp"
             img="/images/distribution.png"
             alt="Désinfection UV"

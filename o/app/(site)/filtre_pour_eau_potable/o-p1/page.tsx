@@ -1,89 +1,117 @@
+import { Component } from "lucide-react"
+
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Home } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Ö P1 – Boire | Ö HOME",
   description:
-    "Ö P1 – Filtration de l’ensemble de l’eau froide de la cuisine. Grande capacité (60 000 L / 3 ans), sous évier, sans électricité ni perte d’eau.",
+    "Ö P1 : filtration de l’ensemble de l’eau froide de la cuisine. Grande capacité (60 000 L / 3 ans), installation sous évier, sans électricité ni rejet d’eau.",
 };
 
-export default function Page() {
+export default function OP1Page() {
   return (
     <main className="container mx-auto max-w-7xl px-4 py-8">
+      {/* HERO (banner) */}
+      <section className="mb-8">
+        <div className="relative aspect-[16/5] w-full overflow-hidden rounded-2xl border border-gray-200 shadow-sm dark:border-gray-800">
+          <Image
+            src="/images/filter_devices_hero.webp"
+            alt="Système de filtration pour l’eau potable"
+            fill
+            priority
+            className="object-cover"
+            sizes="(min-width:1280px) 1200px, 100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/25 to-black/25" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+              Système de filtration pour l’eau potable
+            </h1>
+            <p className="mt-3 text-base opacity-95 sm:text-lg">
+              Solutions sous évier – eau froide de la cuisine
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Breadcrumbs */}
       <nav aria-label="Fil d’Ariane" className="mb-6 text-sm text-slate-600">
         <ol className="flex flex-wrap items-center gap-1">
-          <li className="flex items-center gap-1">
-            <Home className="h-4 w-4" aria-hidden />
-            <Link href="/" className="hover:underline">Accueil</Link>
-          </li>
-          <li className="mx-1 opacity-60">/</li>
           <li>
             <Link href="/filtre_pour_toute_la_maison" className="hover:underline">
               Filtre pour toute la maison
             </Link>
           </li>
-          <li className="mx-1 opacity-60">/</li>
-          <li><span className="opacity-80">Boire</span></li>
-          <li className="mx-1 opacity-60">/</li>
-          <li aria-current="page" className="font-medium text-slate-800">Ö P1</li>
+          <li className="opacity-60">›</li>
+          <li><span>Boire</span></li>
+          <li className="opacity-60">›</li>
+          <li aria-current="page" className="font-medium text-slate-800">
+            Ö P1
+          </li>
         </ol>
       </nav>
 
-      {/* Intro / hero */}
-      <section className="grid gap-6 md:grid-cols-2">
-        {/* Visual placeholder */}
-        <div className="relative overflow-hidden rounded-2xl border border-gray-200 shadow-sm dark:border-gray-800">
+      {/* Header block: poster + intro */}
+      <section className="grid gap-8 md:grid-cols-2">
+        {/* Product poster (placeholder) */}
+        <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-gray-200 shadow-sm dark:border-gray-800">
           <Image
             src="/images/filter_devices_hero.webp"
-            alt="Visuel Ö P1 (espace réservé)"
-            priority
-            width={1200}
-            height={900}
-            className="h-auto w-full object-cover"
-            sizes="(min-width: 1024px) 640px, 100vw"
+            alt="Affiche produit Ö P1 (espace réservé)"
+            fill
+            className="object-cover"
+            sizes="(min-width:1024px) 520px, 90vw"
           />
+          {/* Slogan line like in the mock */}
+          <div className="absolute bottom-4 left-0 right-0 text-center text-sm font-semibold text-rose-600">
+            Sans électricité et sans perte d’eau!
+          </div>
         </div>
 
         {/* Copy */}
-        <div className="px-1">
-          <p className="mb-2 text-xs font-semibold tracking-[0.25em] text-slate-500">
+        <div>
+          <p className="text-xs font-semibold tracking-[0.25em] text-slate-500">
             B O I R E
           </p>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+          <h2 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
             Ö P1
-          </h1>
-
-          <h2 className="mt-3 text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">
-            Filtration de l’ensemble de l’eau froide de la cuisine
           </h2>
 
+          <h3 className="mt-4 text-sm font-semibold uppercase tracking-wide text-slate-800 dark:text-slate-200">
+            Filtration de l’ensemble de l’eau froide de la cuisine
+          </h3>
+
           <p className="mt-3 max-w-prose text-slate-700 dark:text-slate-300">
-            Votre eau du robinet présente un goût ou une odeur désagréable&nbsp;? Le filtre P1 élimine
-            les particules responsables de ces inconvénients. Doté d’une grande capacité de traitement,
-            il s’installe sous l’évier, par un raccordement simple sur l’installation existante. L’eau filtrée
-            est disponible instantanément et à volonté au robinet habituel.
+            Votre eau du robinet présente un goût ou une odeur désagréable&nbsp;?
+            Le filtre P1 élimine les particules responsables de ces inconvénients. Doté
+            d’une grande capacité de traitement, il s’installe sous l’évier via le
+            raccordement existant. L’eau filtrée est disponible instantanément et à
+            volonté au robinet habituel.
           </p>
 
+          <h4 className="mt-5 text-sm font-semibold uppercase tracking-wide text-slate-800 dark:text-slate-200">
+            L’eau est la mission Ö WATER
+          </h4>
           <p className="mt-2 max-w-prose text-slate-700 dark:text-slate-300">
-            À travers sa gamme <strong>SANS BOUTEILLES</strong>, Ö water souhaite agir pour la préservation de
-            notre planète. Adoptez une solution de filtration sous évier, rejoignez le mouvement «&nbsp;SANS BOUTEILLES&nbsp;»
-            pour réduire la consommation de plastique à usage unique.
-          </p>
-
-          <p className="mt-3 font-semibold text-red-600 dark:text-red-400">
-            Sans électricité et sans perte d’eau&nbsp;!
+            À travers notre gamme <strong>SANS BOUTEILLES</strong>, adoptez une solution de
+            filtration sous évier et réduisez l’usage de plastique à usage unique.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href="#contact" className={cn(buttonVariants({ variant: "default" }), "rounded-full")}>
+            <Link
+              href="/#contact"
+              className={cn(buttonVariants({ variant: "default" }), "rounded-full")}
+            >
               Contactez-nous
-            </a>
-            <Link href="/filtre_pour_toute_la_maison" className={cn(buttonVariants({ variant: "outline" }), "rounded-full")}>
+            </Link>
+            <Link
+              href="/filtre_pour_eau_potable"
+              className={cn(buttonVariants({ variant: "outline" }), "rounded-full")}
+            >
               Retour
             </Link>
           </div>
@@ -91,13 +119,13 @@ export default function Page() {
       </section>
 
       {/* Specs + Benefits */}
-      <section className="mt-12 grid gap-8 md:grid-cols-2">
-        {/* Caractéristiques techniques */}
+      <section className="mt-10 grid gap-10 md:grid-cols-2">
+        {/* Specs table */}
         <div>
-          <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
             Caractéristiques techniques
-          </h2>
-          <div className="mt-3 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
+          </h3>
+          <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
             <table className="min-w-full text-left text-sm">
               <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
                 {[
@@ -115,64 +143,78 @@ export default function Page() {
               </tbody>
             </table>
           </div>
-          <p className="mt-2 text-xs text-slate-600 dark:text-slate-400">
-            <span className="font-medium">Fréquence de remplacement des cartouches&nbsp;:</span> Tous les 60 000L / 3 ans
+          <p className="mt-3 text-xs text-slate-600 dark:text-slate-400">
+            <span className="font-medium">Fréquence de remplacement des cartouches&nbsp;:</span>
+            &nbsp;Tous les 60 000L / 3 ans
           </p>
           <p className="text-xs text-slate-600 dark:text-slate-400">
-            <span className="font-medium">Consommable associé&nbsp;:</span> Cartouche de rechange | Ö WATER CART-P1
+            <span className="font-medium">Consommable associé&nbsp;:</span>&nbsp;Cartouche de rechange | Ö WATER CART-P1
           </p>
         </div>
 
-        {/* Les + produit */}
+        {/* Benefits */}
         <div>
-          <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">Les + produit</h2>
-          <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-700 dark:text-slate-300">
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+            Les + produit
+          </h3>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
             <li>Kit prêt à être installé</li>
-            <li>Simple et rapide d’entretien&nbsp;: tête orientable, cartouche de traitement dévissable.</li>
-            <li>Encombrement réduit&nbsp;: s’installe sous l’évier, directement au niveau de l’eau froide.</li>
-            <li>Cartouche longue durée&nbsp;: un an de filtration ou 60 000L / 3 ans.</li>
-            <li>Conçu pour filtrer toute l’eau froide de la cuisine.</li>
+            <li>Entretien simple et rapide : tête orientable, cartouche dévissable</li>
+            <li>Encombrement réduit : s’installe sous l’évier, directement au niveau de l’eau froide</li>
+            <li>Cartouche longue durée : 60 000L / 3 ans</li>
+            <li>Conçu pour filtrer toute l’eau froide de la cuisine</li>
           </ul>
         </div>
 
         {/* Inclus */}
         <div className="md:col-span-2">
-          <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100">Inclus</h2>
-          <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-700 dark:text-slate-300">
-            <li>Tête de filtre avec son support de fixation.</li>
-            <li>Cartouche filtrante au fibre de charbon à haute technologie actif, avec couvercle de protection.</li>
-            <li>Raccordements nécessaires pour l’installation.</li>
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Inclus</h3>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
+            <li>Tête de filtre avec son support de fixation</li>
+            <li>
+              Cartouche filtrante à la fibre de charbon à haute technologie, avec couvercle de protection
+            </li>
+            <li>Raccordements nécessaires pour l’installation</li>
           </ul>
         </div>
       </section>
 
-      {/* Installation visuals */}
-      <section className="mt-12 grid gap-8 md:grid-cols-2">
-        <div className="relative overflow-hidden rounded-2xl border border-gray-200 shadow-sm dark:border-gray-800">
+      {/* Installation illustrations */}
+      <section className="mt-10 grid gap-8 md:grid-cols-2">
+        <div className="relative aspect-video overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800">
           <Image
             src="/images/filter_devices_hero.webp"
             alt="Schéma d’installation sous évier (espace réservé)"
             fill
-            className="object-cover"
-            sizes="(min-width: 1024px) 640px, 100vw"
+            className="object-contain"
+            sizes="(min-width:1024px) 640px, 100vw"
           />
         </div>
-        <div className="relative overflow-hidden rounded-2xl border border-gray-200 shadow-sm dark:border-gray-800">
+        <div className="relative aspect-video overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800">
           <Image
             src="/images/filter_devices_hero.webp"
-            alt="Exemple d’installation réelle (espace réservé)"
+            alt="Photo d’installation sous évier (espace réservé)"
             fill
             className="object-cover"
-            sizes="(min-width: 1024px) 640px, 100vw"
+            sizes="(min-width:1024px) 640px, 100vw"
           />
         </div>
       </section>
 
       {/* Bottom CTA */}
-      <section className="mt-12">
-        <a href="#contact" className={cn(buttonVariants({ variant: "default" }), "rounded-full")}>
+      <section className="mt-12 flex flex-wrap gap-3">
+        <Link
+          href="/#contact"
+          className={cn(buttonVariants({ variant: "default" }), "rounded-full")}
+        >
           Parler à un spécialiste
-        </a>
+        </Link>
+        <Link
+          href="/filtre_pour_eau_potable"
+          className={cn(buttonVariants({ variant: "outline" }), "rounded-full")}
+        >
+          Retour
+        </Link>
       </section>
     </main>
   );
