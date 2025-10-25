@@ -183,19 +183,19 @@ export default function Page() {
 
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <CardLink
-              href="/#contact"
+              href="/filtre_pour_toute_la_maison/o-micro"
               title="Ö Micro"
               img="/images/distribution.png"
               alt="Filtration sédimentaire point d’usage"
             />
             <CardLink
-              href="/#contact"
+              href="/filtre_pour_toute_la_maison/o-central"
               title="Ö Central"
               img="/images/distribution.png"
               alt="Filtration sédimentaire centrale"
             />
             <CardLink
-              href="/#contact"
+              href="/filtre_pour_toute_la_maison/o-xtra-protection"
               title="Ö Xtra Protection"
               img="/images/distribution.png"
               alt="Cartouche sédimentaire haute capacité"
