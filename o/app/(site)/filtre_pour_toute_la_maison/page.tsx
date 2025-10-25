@@ -148,7 +148,7 @@ export default function Page() {
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           <CardLink
-            href="/#contact"
+            href="/filtre_pour_toute_la_maison/o-silkysoft"
             title="Ö SilkySoft"
             img="/images/drinking.png"
             alt="Douche anti-calcaire"
