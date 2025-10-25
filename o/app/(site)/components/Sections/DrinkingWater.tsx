@@ -39,7 +39,7 @@ export default function DrinkingWater() {
                 'rounded-full'
               )}
             >
-              Solution eau potable
+              Filtre pour eau potable
             </a>
           </div>
         </div>
