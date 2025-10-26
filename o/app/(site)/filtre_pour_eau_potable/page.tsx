@@ -133,7 +133,7 @@ export default function Page() {
             alt="Filtration simple & efficace"
           />
           <CardLink
-            href="/#contact"
+            href="/filtre_pour_eau_potable/o-trio"
             title="Le Grand"
             img="/images/drinking.png"
             alt="Station anti-goûts & odeurs"
