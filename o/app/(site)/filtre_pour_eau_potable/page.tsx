@@ -135,7 +135,7 @@ export default function Page() {
           <CardLink
             href="/filtre_pour_eau_potable/o-boir_le_grand"
             title="Le Grand"
-            img="/images/drinking.png"
+            img="/images/Le_Grand.webp"
             alt="Station anti-goûts & odeurs"
           />
         </div>
