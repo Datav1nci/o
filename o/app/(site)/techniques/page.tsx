@@ -41,7 +41,10 @@ export default function TechniquesPage() {
           title="Technologie d’échange d’ions"
           body={
             <>
-              L’adoucisseur d’eau entièrement automatique Ö Water utilise la technologie d’échange d’ions. Résine de haute qualité et longue durée qui élimine les éléments qui contribuent à la dureté et vous donne une eau douce.
+              L’adoucisseur d’eau entièrement automatique Ö Water utilise la
+              technologie d’échange d’ions. Résine de haute qualité et longue
+              durée qui élimine les éléments qui contribuent à la dureté et vous
+              donne une eau douce.
             </>
           }
           cta={{
@@ -59,14 +62,15 @@ export default function TechniquesPage() {
           title="Technique de chélation"
           body={
             <>
-              Les médias Nü-Blend de qualité alimentaire sont solubles dans l’eau
-              et l’enrobage des ions de dureté les rend inertes. Les silicates déposent
-              aussi un revêtement protecteur dans les tuyaux pour limiter l’encrassement.
+              Les médias Nü-Blend de qualité alimentaire sont solubles dans
+              l’eau et l’enrobage des ions de dureté les rend inertes. Les
+              silicates sont également enduits sur les tuyaux et les fixations
+              pour empêcher l’encrassement interne.
             </>
           }
           cta={{
-            label: "Voir produit utilisant la chélation",
-            href: "/filtre_pour_toute_la_maison#durete",
+            label: 'Voir produit utilisant la chélation',
+            href: '/filtre_pour_toute_la_maison#durete',
           }}
         />
 
@@ -78,36 +82,20 @@ export default function TechniquesPage() {
           title="Filtration"
           body={
             <>
-              Plus le média filtrant est épais et gradé, plus il retient les particules
-              (terre, rouille, algues) avec une chute de pression minimale et une durée
-              de vie plus longue. Idéal pour une eau plus claire et sans particules.
+              Plus le média de filtre à fente est épais, plus la durée de vie
+              est longue, meilleures sont les performances. Il élimine les
+              impuretés supérieures à 5 microns avec une baisse minimale de
+              pression pour éviter une suffocation plus rapide.
             </>
           }
           cta={{
-            label: "Voir produit utilisant la filtration",
-            href: "/filtre_pour_toute_la_maison#sediments",
+            label: 'Voir produit utilisant la filtration',
+            href: '/filtre_pour_toute_la_maison#sediments',
           }}
         />
 
-        <Technique
-          reverse
-          id="guided-carbon"
-          img="/images/tech_guided_carbon.webp"
-          imgAlt="Fibre de charbon actif guidé"
-          badge="CHLORE"
-          title="Fibre de charbon guidé"
-          body={
-            <>
-              Filtration certifiée NSF ; adsorption beaucoup plus élevée que le charbon
-              classique, jusqu’à <strong>99 %</strong> de réduction des contaminants.
-              Format compact, entretien minimal et débit optimal constant.
-            </>
-          }
-          cta={{
-            label: "Voir produit utilisant la fibre de charbon guidé",
-            href: "/filtre_pour_toute_la_maison#chlore",
-          }}
-        />
+        {/* Custom section for Fibre de charbon guidé */}
+        <GuidedCarbonSection />
 
         <Technique
           id="uv-led"
@@ -117,18 +105,124 @@ export default function TechniquesPage() {
           title="Technologie UV LED avancée"
           body={
             <>
-              Le stérilisateur UV LED élimine jusqu’à <strong>99,99 %</strong> des bactéries
-              et virus (260–280 nm). Sans mercure ni produits chimiques, peu énergivore
-              et durable, il conserve à votre eau toute sa pureté naturelle.
+              Le stérilisateur UV LED élimine jusqu’à <strong>99,99 %</strong>{' '}
+              des bactéries et virus (260–280 nm). Sans mercure ni produits
+              chimiques, peu énergivore et durable, il conserve à votre eau
+              toute sa pureté naturelle.
             </>
           }
           cta={{
-            label: "Voir produit utilisant la technologie UV LED",
-            href: "/filtre_pour_eau_potable#bacteries",
+            label: 'Voir produit utilisant la technologie UV LED',
+            href: '/filtre_pour_eau_potable#bacteries',
           }}
         />
       </div>
     </main>
+  );
+}
+
+/* ---------- custom guided-carbon section ---------- */
+
+function GuidedCarbonSection() {
+  return (
+    <section
+      id="guided-carbon"
+      className="grid grid-cols-1 items-start gap-10 md:grid-cols-2"
+    >
+      {/* Text column */}
+      <div>
+        <p className="mb-2 text-xs font-semibold tracking-[0.35em] text-slate-900">
+          CHLORE
+        </p>
+        <h2 className="text-3xl font-bold tracking-tight text-sky-800 md:text-4xl">
+          Fibre de charbon guidé
+        </h2>
+
+        <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-sky-800">
+          DE L’EAU PROPRE, SIMPLIFIÉE
+        </p>
+        <div className="mt-3 space-y-1 text-sm text-slate-700">
+          <p>
+            <span className="font-bold text-sky-800">1&nbsp;</span>
+            Filtration certifiée NSF de classe mondiale
+          </p>
+          <p>
+            <span className="font-bold text-sky-800">50x&nbsp;</span>
+            Plus d’adsorption que le charbon classique
+          </p>
+          <p>
+            <span className="font-bold text-sky-800">99%&nbsp;</span>
+            Réduction des contaminants pour une eau pure
+          </p>
+        </div>
+
+        <p className="mt-6 text-sm font-semibold text-sky-800">
+          Alignement de précision pour une eau ultra pure
+        </p>
+        <p className="mt-2 text-sm text-slate-700">
+          Fibres de charbon actif à micro-pores alignés, filtrant plus vite et
+          offrant une eau plus propre à chaque goutte.
+        </p>
+
+        <p className="mt-6 text-sm font-semibold text-sky-800">
+          Nos Avantages
+        </p>
+        <div className="mt-2 space-y-3 text-sm text-slate-700">
+          <div>
+            <p className="font-semibold text-sky-800">
+              PAS DE PERTE DE PRESSION
+            </p>
+            <p>Débit optimal et constant.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-sky-800">COMPACTE &amp; EFFICACE</p>
+            <p>Puissance dans un format réduit.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-sky-800">ENTRETIEN MINIMAL</p>
+            <p>Peu d’entretien, plus de confort.</p>
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <Link
+            href="/filtre_pour_toute_la_maison#chlore"
+            className={cn(
+              buttonVariants({ variant: 'default' }),
+              'rounded-full'
+            )}
+          >
+            Voir produit utilisant la fibre de charbon guidé
+          </Link>
+        </div>
+      </div>
+
+      {/* Images column (right) */}
+      <div className="space-y-6">
+        <div className="relative overflow-hidden rounded-2xl bg-white shadow-md">
+          {/* TODO: remplacer par l’image haute résolution du charbon guidé */}
+          <Image
+            src="/images/tech_guided_carbon.webp"
+            alt="Fibre de charbon guidé – détail"
+            width={800}
+            height={600}
+            className="h-full w-full object-cover"
+            sizes="(min-width: 1024px) 480px, 90vw"
+          />
+        </div>
+        <div className="relative overflow-hidden rounded-2xl bg-white shadow-md">
+          {/* TODO: remplacer par une seconde image spécifique */}
+          <Image
+            src="/images/tech_guided_carbon.webp"
+            alt="Structure de la fibre de charbon guidé"
+            width={800}
+            height={600}
+            className="h-full w-full object-cover"
+            sizes="(min-width: 1024px) 480px, 90vw"
+          />
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -181,8 +275,12 @@ function Technique({
             {badge}
           </p>
         )}
-        <h2 className="text-3xl font-bold tracking-tight text-slate-900">{title}</h2>
-        <p className="mt-4 max-w-prose text-slate-600 dark:text-slate-300">{body}</p>
+        <h2 className="text-3xl font-bold tracking-tight text-slate-900">
+          {title}
+        </h2>
+        <p className="mt-4 max-w-prose text-slate-600 dark:text-slate-300">
+          {body}
+        </p>
 
         {cta && (
           <div className="mt-6">
