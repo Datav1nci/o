@@ -1,3 +1,4 @@
+// app/(site)/filtre_pour_eau_potable/page.tsx
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -48,13 +49,11 @@ function CardLink({
 export default function Page() {
   return (
     <main className="container mx-auto max-w-7xl px-4 py-8">
-      {/* Parallax HERO (CSS bg-fixed) */}
+      {/* Parallax HERO (CSS bg-fixed on desktop only) */}
       <section className="mb-10">
-        <div
-          className="relative h-[44vh] min-h-[320px] overflow-hidden rounded-2xl border border-gray-200 shadow-sm dark:border-gray-800"
-        >
+        <div className="relative h-[44vh] min-h-[320px] overflow-hidden rounded-2xl border border-gray-200 shadow-sm dark:border-gray-800">
           <div
-            className="absolute inset-0 bg-fixed bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-center lg:bg-fixed"
             style={{ backgroundImage: "url('/images/filter_devices_hero.webp')" }}
           />
           <div className="absolute inset-0 bg-black/30" />
@@ -157,7 +156,10 @@ export default function Page() {
         </p>
 
         <div className="mt-6 font-semibold">
-          <a href="/#techniques" className="inline-flex items-center gap-1 underline-offset-2 hover:underline">
+          <a
+            href="/#techniques"
+            className="inline-flex items-center gap-1 underline-offset-2 hover:underline"
+          >
             Voir technologies utilisées <ChevronRight className="h-4 w-4" />
           </a>
         </div>
