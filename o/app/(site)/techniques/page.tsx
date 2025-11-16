@@ -105,10 +105,7 @@ export default function TechniquesPage() {
           title="Technologie UV LED avancée"
           body={
             <>
-              Le stérilisateur UV LED élimine jusqu’à <strong>99,99 %</strong>{' '}
-              des bactéries et virus (260–280 nm). Sans mercure ni produits
-              chimiques, peu énergivore et durable, il conserve à votre eau
-              toute sa pureté naturelle.
+                 Le stérilisateur UV LED élimine 99,99 % des bactéries et virus grâce à une lumière ultraviolette à onde courte (260–280 nm), imitant la lumière du soleil. Plus écologique et durable qu’une lampe au mercure, il consomme peu d’énergie, ne libère aucun polluant nocif et offre une durée de vie jusqu’à 10 fois plus longue.
             </>
           }
           cta={{
