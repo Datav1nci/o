@@ -76,7 +76,7 @@ export default function TechniquesPage() {
 
         <Technique
           id="sedimentation"
-          img="/images/tech_sedimentation.webp"
+          img="/images/LA_SEDIMENTATION_FILTRATION.webp"
           imgAlt="Schéma de filtration des sédiments multi-couches"
           badge="LA SÉDIMENTATION"
           title="Filtration"
