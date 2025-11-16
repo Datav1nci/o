@@ -129,7 +129,7 @@ export default function Page() {
           <CardLink
             href="/#contact"
             title="Le Simple"
-            img="/images/distribution.png"
+            img="/images/Le_simple.webp"
             alt="Filtration simple & efficace"
           />
           <CardLink
