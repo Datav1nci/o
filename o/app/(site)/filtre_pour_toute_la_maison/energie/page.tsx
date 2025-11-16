@@ -36,26 +36,42 @@ export default function EnergiePage() {
         </div>
 
         <div>
-          <p className="text-xs tracking-widest text-blue-700">DURETÉ</p>
-          <h1 className="mt-1 text-3xl font-bold tracking-tight text-slate-900">Ö Energie</h1>
+          <p className="text-xs tracking-widest text-slate-900">DURETÉ</p>
+          <h1 className="mt-1 text-3xl font-bold tracking-tight text-sky-700">Ö Energie</h1>
 
-          <p className="mt-4 text-slate-700">
-            Pour une eau plus agréable et plus claire, dans toute la maison ! Ce pot simple
-            équipé d’une cartouche double-fonctions (manchon filtrant 10 µm + conteneur de
-            Nü-Blend en grains) protège contre le calcaire et la corrosion tout en retenant
-            les particules. Solution pratique, compacte et économique.
+          <p className="mt-4 text-xs font-semibold uppercase tracking-tight text-slate-900">
+            POUR UNE EAU PLUS AGRÉABLE ET PLUS CLAIRE, DANS TOUTE LA MAISON !
+          </p>
+
+          <p className="mt-4 text-sm leading-relaxed text-slate-600">
+            Ce pot-simple équipé d’une cartouche double-fonctions (manchon filtrant 10µm + conteneur de Nu Blend
+            en grains) permet une protection optimale contre le calcaire et une protection efficace contre la
+            corrosion pour votre installation d’eau potable et des de l’eau riche en substances vitales pour vous.
+          </p>
+
+          <p className="mt-4 text-sm leading-relaxed text-slate-600">
+            Protection optimale contre le calcaire l’élimination des particules solides, ainsi que la réduction des
+            substances altérant la qualité de l’eau: Installé à l’arrivée d’eau générale ou à un point d’usage, ce
+            filtre vous offre une eau plus agréable au quotidien, dans toute la maison: la solution pratique et
+            compacte.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/#contact" className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}>
+            <Link
+              href="/#contact"
+              className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}
+            >
               Nous contacter
             </Link>
-            <Link href="/filtre_pour_toute_la_maison#durete" className={cn(buttonVariants({ variant: 'outline' }), 'rounded-full')}>
+            <Link
+              href="/filtre_pour_toute_la_maison#durete"
+              className={cn(buttonVariants({ variant: 'outline' }), 'rounded-full')}
+            >
               Retour à Dureté
             </Link>
           </div>
         </div>
-      </div>
+
 
       {/* Specs + advantages */}
       <div className="mt-10 grid gap-10 rounded-2xl border border-gray-100 bg-gray-50 p-6 md:grid-cols-2">
