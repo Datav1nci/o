@@ -156,7 +156,7 @@ export default function Page() {
           <CardLink
             href="/filtre_pour_toute_la_maison/o-adoucisseur"
             title="Ö Adoucisseur"
-            img="/images/distribution.png"
+            img="/images/O_Adoucisseur.webp"
             alt="Adoucisseur d’eau"
           />
         </div>
