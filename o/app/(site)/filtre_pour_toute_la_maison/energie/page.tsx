@@ -118,7 +118,7 @@ export default function EnergiePage() {
                       <div className="relative mx-auto h-16 w-10">
                         {/* TODO: remplacer par le visuel Protecteur dédié */}
                         <Image
-                          src="/images/O_Energie.webp"
+                          src="/images/Protecteur.webp"
                           alt="Protecteur"
                           fill
                           className="object-contain"
@@ -130,7 +130,7 @@ export default function EnergiePage() {
                       <div className="relative mx-auto h-16 w-10">
                         {/* TODO: remplacer par le visuel Énergie dédié */}
                         <Image
-                          src="/images/O_Energie.webp"
+                          src="/images/Protecteur2.webp"
                           alt="Énergie"
                           fill
                           className="object-contain"
