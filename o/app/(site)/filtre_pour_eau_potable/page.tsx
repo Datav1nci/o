@@ -108,7 +108,7 @@ export default function Page() {
           <CardLink
             href="/filtre_pour_eau_potable/o-trio"
             title="Trio"
-            img="/images/drinking.png"
+            img="/images/Trio.webp"
             alt="Système Trio"
           />
           <CardLink
