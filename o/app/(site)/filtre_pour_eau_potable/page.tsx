@@ -123,7 +123,7 @@ export default function Page() {
           <CardLink
             href="/#contact"
             title="Osmosseur"
-            img="/images/drinking.png"
+            img="/images/Ossmos.webp"
             alt="Osmose inverse compact"
           />
           <CardLink
