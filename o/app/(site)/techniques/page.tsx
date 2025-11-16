@@ -56,7 +56,7 @@ export default function TechniquesPage() {
         <Technique
           reverse
           id="chelation"
-          img="/images/tech_chelation.webp"
+          img="/images/Technique_de_chelation.webp"
           imgAlt="Schéma de chélation des ions de dureté"
           badge="DURETÉ"
           title="Technique de chélation"
