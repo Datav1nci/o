@@ -27,7 +27,7 @@ export default function EnergiePage() {
         <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
           {/* TODO: swap for your product poster */}
           <Image
-            src="/images/drinking.png"
+            src="/images/O_Energie.webp"
             alt="Ö Energie – visuel produit"
             fill
             className="object-cover"
