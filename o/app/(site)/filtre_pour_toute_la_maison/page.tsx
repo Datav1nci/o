@@ -185,7 +185,7 @@ export default function Page() {
             <CardLink
               href="/filtre_pour_toute_la_maison/o-micro"
               title="Ö Micro"
-              img="/images/distribution.png"
+              img="/images/Point_D_Usage_nt-Sediments.webp"
               alt="Filtration sédimentaire point d’usage"
             />
             <CardLink
