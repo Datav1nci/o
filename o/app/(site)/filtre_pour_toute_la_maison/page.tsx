@@ -227,7 +227,7 @@ export default function Page() {
           <CardLink
             href="/filtre_pour_toute_la_maison/le-grand"
             title="Le Grand"
-            img="/images/drinking.png"
+            img="/images/Le_Grand.webp"
             alt="Station anti-goûts et odeurs"
           />
         </div>
