@@ -197,7 +197,7 @@ export default function Page() {
             <CardLink
               href="/filtre_pour_toute_la_maison/o-xtra-protection"
               title="Ö Xtra Protection"
-              img="/images/distribution.png"
+              img="/images/O_Xtra_Protection.webp"
               alt="Cartouche sédimentaire haute capacité"
             />
           </div>
