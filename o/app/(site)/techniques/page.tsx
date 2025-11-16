@@ -41,9 +41,7 @@ export default function TechniquesPage() {
           title="Technologie d’échange d’ions"
           body={
             <>
-              L’adoucisseur d’eau Ö&nbsp;Home élimine les éléments qui contribuent à la dureté
-              pour vous fournir une eau douce. La résine d’échange d’ions de haute qualité
-              capte calcium et magnésium de manière efficace et durable.
+              L’adoucisseur d’eau entièrement automatique Ö Water utilise la technologie d’échange d’ions. Résine de haute qualité et longue durée qui élimine les éléments qui contribuent à la dureté et vous donne une eau douce.
             </>
           }
           cta={{
