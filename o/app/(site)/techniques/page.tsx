@@ -14,17 +14,23 @@ export const metadata: Metadata = {
 export default function TechniquesPage() {
   return (
     <main>
-      {/* Parallax hero (bg-fixed only on desktop to avoid iOS issues) */}
+      {/* Hero header using Technique_header.webp */}
       <section
         className="
-          relative h-[44vh] min-h-[300px] w-full
-          bg-center bg-cover lg:bg-fixed
+          relative h-[44vh] min-h-[300px] w-full overflow-hidden
         "
-        style={{ backgroundImage: "url('/images/techniques_hero.webp')" }}
         aria-label="Bannière des techniques utilisées"
       >
+        <Image
+          src="/images/Technique_header.webp"
+          alt="Techniques utilisées pour le traitement de l’eau"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
         <div className="absolute inset-0 bg-black/35" />
-        <div className="relative z-10 flex h-full items-center justify-center">
+        <div className="relative z-10 flex h-full items-center justify-center px-4">
           <h1 className="text-center text-3xl font-bold text-white sm:text-4xl md:text-5xl">
             Techniques utilisées
           </h1>
@@ -105,7 +111,12 @@ export default function TechniquesPage() {
           title="Technologie UV LED avancée"
           body={
             <>
-                 Le stérilisateur UV LED élimine 99,99 % des bactéries et virus grâce à une lumière ultraviolette à onde courte (260–280 nm), imitant la lumière du soleil. Plus écologique et durable qu’une lampe au mercure, il consomme peu d’énergie, ne libère aucun polluant nocif et offre une durée de vie jusqu’à 10 fois plus longue.
+              Le stérilisateur UV LED élimine 99,99 % des bactéries et virus
+              grâce à une lumière ultraviolette à onde courte (260–280 nm),
+              imitant la lumière du soleil. Plus écologique et durable qu’une
+              lampe au mercure, il consomme peu d’énergie, ne libère aucun
+              polluant nocif et offre une durée de vie jusqu’à 10 fois plus
+              longue.
             </>
           }
           cta={{
@@ -197,7 +208,6 @@ function GuidedCarbonSection() {
       {/* Images column (right) */}
       <div className="space-y-6">
         <div className="relative overflow-hidden rounded-2xl bg-white shadow-md">
-          {/* TODO: remplacer par l’image haute résolution du charbon guidé */}
           <Image
             src="/images/Technique_Fibre_de_charbon.webp"
             alt="Fibre de charbon guidé – détail"
@@ -208,7 +218,6 @@ function GuidedCarbonSection() {
           />
         </div>
         <div className="relative overflow-hidden rounded-2xl bg-white shadow-md">
-          {/* TODO: remplacer par une seconde image spécifique */}
           <Image
             src="/images/Technique_Fibre_de_charbon2.webp"
             alt="Structure de la fibre de charbon guidé"
