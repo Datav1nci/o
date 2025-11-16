@@ -199,7 +199,7 @@ function GuidedCarbonSection() {
         <div className="relative overflow-hidden rounded-2xl bg-white shadow-md">
           {/* TODO: remplacer par l’image haute résolution du charbon guidé */}
           <Image
-            src="/images/tech_guided_carbon.webp"
+            src="/images/Technique_Fibre_de_charbon.webp"
             alt="Fibre de charbon guidé – détail"
             width={800}
             height={600}
@@ -210,7 +210,7 @@ function GuidedCarbonSection() {
         <div className="relative overflow-hidden rounded-2xl bg-white shadow-md">
           {/* TODO: remplacer par une seconde image spécifique */}
           <Image
-            src="/images/tech_guided_carbon.webp"
+            src="/images/Technique_Fibre_de_charbon2.webp"
             alt="Structure de la fibre de charbon guidé"
             width={800}
             height={600}
