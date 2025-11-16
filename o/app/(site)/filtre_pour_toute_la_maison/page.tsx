@@ -150,7 +150,7 @@ export default function Page() {
           <CardLink
             href="/filtre_pour_toute_la_maison/o-silkysoft"
             title="Ö SilkySoft"
-            img="/images/drinking.png"
+            img="/images/O_SilkySoft.webp"
             alt="Douche anti-calcaire"
           />
           <CardLink
