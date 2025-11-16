@@ -191,7 +191,7 @@ export default function Page() {
             <CardLink
               href="/filtre_pour_toute_la_maison/o-central"
               title="Ö Central"
-              img="/images/distribution.png"
+              img="/images/O_Central.webp"
               alt="Filtration sédimentaire centrale"
             />
             <CardLink
