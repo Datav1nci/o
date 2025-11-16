@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 export default function TechniquesPage() {
   return (
     <main>
-      {/* Parallax hero (uses a fixed background for smooth, GPU-cheap parallax) */}
+      {/* Parallax hero (bg-fixed only on desktop to avoid iOS issues) */}
       <section
         className="
           relative h-[44vh] min-h-[300px] w-full
-          bg-fixed bg-center bg-cover
+          bg-center bg-cover lg:bg-fixed
         "
         style={{ backgroundImage: "url('/images/techniques_hero.webp')" }}
         aria-label="Bannière des techniques utilisées"
@@ -188,7 +188,13 @@ function Technique({
 
         {cta && (
           <div className="mt-6">
-            <Link href={cta.href} className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}>
+            <Link
+              href={cta.href}
+              className={cn(
+                buttonVariants({ variant: 'default' }),
+                'rounded-full'
+              )}
+            >
               {cta.label}
             </Link>
           </div>
