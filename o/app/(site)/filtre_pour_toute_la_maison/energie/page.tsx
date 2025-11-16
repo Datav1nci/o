@@ -97,48 +97,92 @@ export default function EnergiePage() {
             >
               Caractéristiques techniques
             </h2>
+
             <div className="mt-4 overflow-x-auto">
-              <table className="w-full min-w-[480px] text-sm text-slate-700">
-                <tbody className="overflow-hidden rounded-xl border border-gray-200 bg-white [&_tr:nth-child(odd)]:bg-slate-50/70">
-                  <tr>
-                    <td className="whitespace-nowrap px-4 py-2 font-medium text-slate-900">
-                      Nom du produit
-                    </td>
-                    <td className="px-4 py-2">Protecteur / Énergie</td>
+              <table className="w-full min-w-[520px] border-collapse text-sm text-slate-700">
+                <thead>
+                  <tr className="border-b border-gray-300">
+                    <th className="px-4 py-2 text-left font-medium text-slate-900">
+                      &nbsp;
+                    </th>
+                    <th className="px-4 py-2 text-center font-medium text-slate-900">
+                      Protecteur
+                    </th>
+                    <th className="px-4 py-2 text-center font-medium text-slate-900">
+                      Énergie
+                    </th>
                   </tr>
-                  <tr>
+                  <tr className="border-b border-gray-300">
+                    <th className="px-4 py-3" />
+                    <th className="px-4 py-3">
+                      <div className="relative mx-auto h-16 w-10">
+                        {/* TODO: remplacer par le visuel Protecteur dédié */}
+                        <Image
+                          src="/images/O_Energie.webp"
+                          alt="Protecteur"
+                          fill
+                          className="object-contain"
+                          sizes="40px"
+                        />
+                      </div>
+                    </th>
+                    <th className="px-4 py-3">
+                      <div className="relative mx-auto h-16 w-10">
+                        {/* TODO: remplacer par le visuel Énergie dédié */}
+                        <Image
+                          src="/images/O_Energie.webp"
+                          alt="Énergie"
+                          fill
+                          className="object-contain"
+                          sizes="40px"
+                        />
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-gray-200">
                     <td className="whitespace-nowrap px-4 py-2 font-medium text-slate-900">
                       Dimensions
                     </td>
-                    <td className="px-4 py-2">4.5×20 in / 2.5×10 in</td>
+                    <td className="px-4 py-2 text-center">4.5×20 in</td>
+                    <td className="px-4 py-2 text-center">2.5×10 in</td>
                   </tr>
-                  <tr>
+                  <tr className="border-b border-gray-200">
                     <td className="whitespace-nowrap px-4 py-2 font-medium text-slate-900">
-                      Débit maximal
+                      Débit maximal (L/min)
                     </td>
-                    <td className="px-4 py-2">25 L/min / 15 L/min</td>
+                    <td className="px-4 py-2 text-center">25</td>
+                    <td className="px-4 py-2 text-center">15</td>
                   </tr>
-                  <tr>
+                  <tr className="border-b border-gray-200">
                     <td className="whitespace-nowrap px-4 py-2 font-medium text-slate-900">
-                      Pression max.
+                      Pression maximale (bar)
                     </td>
-                    <td className="px-4 py-2">&lt; 8 bar / &lt; 5 bar</td>
+                    <td className="px-4 py-2 text-center">&lt; 8</td>
+                    <td className="px-4 py-2 text-center">&lt; 5</td>
                   </tr>
-                  <tr>
+                  <tr className="border-b border-gray-200">
                     <td className="whitespace-nowrap px-4 py-2 font-medium text-slate-900">
                       Capacité
                     </td>
-                    <td className="px-4 py-2">427 000 L / 56 000 L</td>
+                    <td className="px-4 py-2 text-center">427&nbsp;000 L</td>
+                    <td className="px-4 py-2 text-center">56&nbsp;000 L</td>
                   </tr>
                   <tr>
                     <td className="whitespace-nowrap px-4 py-2 font-medium text-slate-900">
                       Volume (2 ppm)
                     </td>
-                    <td className="px-4 py-2">213 500 / 28 000</td>
+                    <td className="px-4 py-2 text-center">213&nbsp;500</td>
+                    <td className="px-4 py-2 text-center">28&nbsp;000</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+
+            <p className="mt-3 text-sm font-semibold text-slate-800">
+              Consommable associé : Cartouche 4.5×20, 2.5×10 anti calcaire
+            </p>
           </div>
 
           {/* Right: product advantages */}
@@ -148,15 +192,16 @@ export default function EnergiePage() {
             </h2>
             <ul className="mt-4 space-y-2 text-slate-700">
               <li>
-                ✓ Encombrement réduit : 1 pot unique au lieu d’une station
+                ✓ Encombrement réduit avec 1 pot unique plutôt qu’une station
                 duplex
               </li>
               <li>✓ Entretien simplifié : 1 seule cartouche à remplacer</li>
               <li>
-                ✓ Filtration complète jusqu’à 10 µm (sable, limon, rouille)
+                ✓ Filtration complète : retient les impuretés jusqu’à 10 µm
+                (sable, limon, rouille)
               </li>
               <li>✓ Protège contre le calcaire</li>
-              <li>✓ Moins de consommables à jeter</li>
+              <li>✓ Réduction des quantités de consommables à jeter</li>
             </ul>
           </div>
         </div>
