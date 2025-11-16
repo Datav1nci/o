@@ -1,3 +1,4 @@
+// app/(site)/filtre_pour_toute_la_maison/energie/page.tsx
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -27,7 +28,6 @@ export default function EnergiePage() {
       {/* Header block */}
       <div className="grid gap-8 md:grid-cols-2">
         <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
-          {/* TODO: swap for your product poster */}
           <Image
             src="/images/O_Energie.webp"
             alt="Ö Energie – visuel produit"
@@ -84,61 +84,83 @@ export default function EnergiePage() {
             </Link>
           </div>
         </div>
-
-        {/* ⬇️ This is the only added line — closes the header grid wrapper */}
       </div>
 
       {/* Specs + advantages */}
-      <div className="mt-10 grid gap-10 rounded-2xl border border-gray-100 bg-gray-50 p-6 md:grid-cols-2">
-        <div>
-          <h2 className="text-lg font-semibold">Caractéristiques techniques</h2>
-          <div className="mt-4 overflow-x-auto">
-            <table className="w-full min-w-[480px] text-sm">
-              <tbody className="[&_tr:nth-child(odd)]:bg-white/60">
-                <tr>
-                  <td className="px-3 py-2 font-medium">Nom du produit</td>
-                  <td className="px-3 py-2">Protecteur / Énergie</td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 font-medium">Dimensions</td>
-                  <td className="px-3 py-2">4.5×20 in / 2.5×10 in</td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 font-medium">Débit maximal</td>
-                  <td className="px-3 py-2">25 L/min / 15 L/min</td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 font-medium">Pression max.</td>
-                  <td className="px-3 py-2">&lt; 8 bar / &lt; 5 bar</td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 font-medium">Capacité</td>
-                  <td className="px-3 py-2">427 000 L / 56 000 L</td>
-                </tr>
-                <tr>
-                  <td className="px-3 py-2 font-medium">Volume (2 ppm)</td>
-                  <td className="px-3 py-2">213 500 / 28 000</td>
-                </tr>
-              </tbody>
-            </table>
+      <section aria-labelledby="specs-title" className="mt-10">
+        <div className="grid gap-10 rounded-2xl border border-gray-200 bg-gray-50 p-6 md:grid-cols-2 md:p-8">
+          {/* Left: technical specs */}
+          <div>
+            <h2
+              id="specs-title"
+              className="text-lg font-semibold text-slate-900"
+            >
+              Caractéristiques techniques
+            </h2>
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full min-w-[480px] text-sm text-slate-700">
+                <tbody className="overflow-hidden rounded-xl border border-gray-200 bg-white [&_tr:nth-child(odd)]:bg-slate-50/70">
+                  <tr>
+                    <td className="whitespace-nowrap px-4 py-2 font-medium text-slate-900">
+                      Nom du produit
+                    </td>
+                    <td className="px-4 py-2">Protecteur / Énergie</td>
+                  </tr>
+                  <tr>
+                    <td className="whitespace-nowrap px-4 py-2 font-medium text-slate-900">
+                      Dimensions
+                    </td>
+                    <td className="px-4 py-2">4.5×20 in / 2.5×10 in</td>
+                  </tr>
+                  <tr>
+                    <td className="whitespace-nowrap px-4 py-2 font-medium text-slate-900">
+                      Débit maximal
+                    </td>
+                    <td className="px-4 py-2">25 L/min / 15 L/min</td>
+                  </tr>
+                  <tr>
+                    <td className="whitespace-nowrap px-4 py-2 font-medium text-slate-900">
+                      Pression max.
+                    </td>
+                    <td className="px-4 py-2">&lt; 8 bar / &lt; 5 bar</td>
+                  </tr>
+                  <tr>
+                    <td className="whitespace-nowrap px-4 py-2 font-medium text-slate-900">
+                      Capacité
+                    </td>
+                    <td className="px-4 py-2">427 000 L / 56 000 L</td>
+                  </tr>
+                  <tr>
+                    <td className="whitespace-nowrap px-4 py-2 font-medium text-slate-900">
+                      Volume (2 ppm)
+                    </td>
+                    <td className="px-4 py-2">213 500 / 28 000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Right: product advantages */}
+          <div>
+            <h2 className="text-lg font-semibold text-slate-900">
+              Les + produit
+            </h2>
+            <ul className="mt-4 space-y-2 text-slate-700">
+              <li>
+                ✓ Encombrement réduit : 1 pot unique au lieu d’une station
+                duplex
+              </li>
+              <li>✓ Entretien simplifié : 1 seule cartouche à remplacer</li>
+              <li>
+                ✓ Filtration complète jusqu’à 10 µm (sable, limon, rouille)
+              </li>
+              <li>✓ Protège contre le calcaire</li>
+              <li>✓ Moins de consommables à jeter</li>
+            </ul>
           </div>
         </div>
-
-        <div>
-          <h2 className="text-lg font-semibold">Les + produit</h2>
-          <ul className="mt-4 space-y-2 text-slate-700">
-            <li>
-              ✔︎ Encombrement réduit : 1 pot unique au lieu d’une station duplex
-            </li>
-            <li>
-              ✔︎ Entretien simplifié : 1 seule cartouche à remplacer
-            </li>
-            <li>✔︎ Filtration complète jusqu’à 10 µm (sable, limon, rouille)</li>
-            <li>✔︎ Protège contre le calcaire</li>
-            <li>✔︎ Moins de consommables à jeter</li>
-          </ul>
-        </div>
-      </div>
+      </section>
 
       {/* Included + cartridge */}
       <div className="mt-10 grid gap-10 md:grid-cols-2">
@@ -165,7 +187,6 @@ export default function EnergiePage() {
       {/* Installation illustrations */}
       <div className="mt-10 grid gap-8 md:grid-cols-2">
         <div className="relative aspect-video overflow-hidden rounded-2xl border border-gray-200">
-          {/* TODO: replace with your “schema install” image */}
           <Image
             src="/images/distribution.png"
             alt="Illustration de l’installation"
@@ -174,7 +195,6 @@ export default function EnergiePage() {
           />
         </div>
         <div className="relative aspect-video overflow-hidden rounded-2xl border border-gray-200">
-          {/* TODO: replace with your real photo */}
           <Image
             src="/images/drinking.png"
             alt="Photo d’installation"

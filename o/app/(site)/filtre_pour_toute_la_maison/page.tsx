@@ -111,10 +111,7 @@ export default function Page() {
           Dureté
         </h2>
         <p className="mt-3 max-w-4xl text-slate-700 dark:text-slate-300">
-          L’eau dure peut affecter votre maison et votre santé. Avec le temps, le calcaire
-          dégrade la robinetterie, les appareils (chauffe-eau, lave-linge) et laisse des
-          traces, tout en asséchant la peau et les cheveux. Nous proposons des
-          configurations adaptées à la taille de votre habitation.
+         L’eau dure peut affecter votre maison et votre santé. L’eau provient de diverses sources, y compris le forage, les camions-citernes, etc. La qualité de cette eau est douteuse et devient de plus en plus dure. L’eau dure peut causer beaucoup de dommages non seulement à votre maison (robinets, appareils électriques), mais aussi à votre santé (cheveux et peau).
         </p>
 
         <div className="mt-6 font-semibold">
