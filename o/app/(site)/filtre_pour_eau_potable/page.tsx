@@ -114,7 +114,7 @@ export default function Page() {
           <CardLink
             href="/#contact"
             title="Ö P2"
-            img="/images/distribution.png"
+            img="/images/O_P2.webp"
             alt="Système Ö P2"
           />
         </div>
