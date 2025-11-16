@@ -135,7 +135,7 @@ export default function Page() {
           <CardLink
             href="/filtre_pour_toute_la_maison/nu-blend"
             title="Nü Blend"
-            img="/images/filter_devices_hero.webp"
+            img="/images/Nu_Blend.webp"
             alt="Solution dureté Nü Blend"
           />
           <CardLink
