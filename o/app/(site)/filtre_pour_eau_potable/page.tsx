@@ -102,7 +102,7 @@ export default function Page() {
           <CardLink
             href="/filtre_pour_eau_potable/o-p1"
             title="Ö P1"
-            img="/images/distribution.png"
+            img="/images/O_P1.webp"
             alt="Système Ö P1"
           />
           <CardLink
