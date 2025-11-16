@@ -141,7 +141,7 @@ export default function Page() {
           <CardLink
             href="/filtre_pour_toute_la_maison/o-solaire"
             title="Ö Solaire"
-            img="/images/distribution.png"
+            img="/images/O_SOLAIRE.webp"
             alt="Solution dureté Ö Solaire"
           />
         </div>
