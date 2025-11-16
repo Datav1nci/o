@@ -128,7 +128,7 @@ export default function Page() {
           <CardLink
             href="/filtre_pour_toute_la_maison/energie"
             title="Ö Energie"
-            img="/images/distribution.png"
+            img="/images/O_Energie.webp"
             alt="Solution dureté Ö Énergie"
           />
           {/* UPDATED: link now points to the new page */}
