@@ -82,7 +82,7 @@ export default function Footer() {
       <div className="container mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-12 md:grid-cols-2">
         {/* LEFT: form */}
         <div>
-          <h2 className="mb-3 text-2xl font-semibold">Contactez-nous</h2>
+          <h2 className="mb-3 text-2xl font-semibold">Contactez-nous info@owater.ca</h2>
 
           <form onSubmit={onSubmit} className="grid gap-4" autoComplete="on" aria-busy={disabled} aria-describedby="form-status" noValidate>
             {/* Honeypot */}
