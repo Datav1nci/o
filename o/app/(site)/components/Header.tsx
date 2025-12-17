@@ -13,7 +13,7 @@ export default function Header() {
   const close = () => setOpen(false);
 
   const handleLoginClick = () => {
-    alert('Connexion bientôt disponible.');
+    alert('La création de compte sera bientôt disponible.');
   };
 
   return (
