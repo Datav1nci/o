@@ -28,12 +28,12 @@ function CardLink({
       href={href}
       className="group block rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
     >
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-slate-50 p-3 dark:bg-gray-950">
         <Image
           src={img}
           alt={alt}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          className="object-contain transition-transform duration-300 group-hover:scale-[1.02]"
           sizes="(min-width:1024px) 360px, 90vw"
           priority={false}
         />
@@ -111,24 +111,29 @@ export default function Page() {
           Dureté
         </h2>
         <p className="mt-3 max-w-4xl text-slate-700 dark:text-slate-300">
-         L’eau dure peut affecter votre maison et votre santé. L’eau provient de diverses sources, y compris le forage, les camions-citernes, etc. La qualité de cette eau est douteuse et devient de plus en plus dure. L’eau dure peut causer beaucoup de dommages non seulement à votre maison (robinets, appareils électriques), mais aussi à votre santé (cheveux et peau).
+          L’eau dure peut affecter votre maison et votre santé. L’eau provient de diverses
+          sources, y compris le forage, les camions-citernes, etc. La qualité de cette eau
+          est douteuse et devient de plus en plus dure. L’eau dure peut causer beaucoup de
+          dommages non seulement à votre maison (robinets, appareils électriques), mais
+          aussi à votre santé (cheveux et peau).
         </p>
 
         <div className="mt-6 font-semibold">
-          <a href="/#techniques" className="inline-flex items-center gap-1 underline-offset-2 hover:underline">
+          <a
+            href="/#techniques"
+            className="inline-flex items-center gap-1 underline-offset-2 hover:underline"
+          >
             Voir technologies utilisées <ChevronRight className="h-4 w-4" />
           </a>
         </div>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Ö Energie already implemented */}
           <CardLink
             href="/filtre_pour_toute_la_maison/energie"
             title="Ö Energie"
             img="/images/O_Energie.webp"
             alt="Solution dureté Ö Énergie"
           />
-          {/* UPDATED: link now points to the new page */}
           <CardLink
             href="/filtre_pour_toute_la_maison/nu-blend"
             title="Nü Blend"
@@ -162,18 +167,26 @@ export default function Page() {
       {/* SÉDIMENTS — (light gray background) */}
       <section id="sediments" aria-labelledby="sediments-title" className="py-12">
         <div className="rounded-2xl border border-gray-100 bg-gray-50 p-6 sm:p-8">
-          <h2 id="sediments-title" className="text-3xl font-bold tracking-tight text-slate-800">
+          <h2
+            id="sediments-title"
+            className="text-3xl font-bold tracking-tight text-slate-800"
+          >
             Sédiments
           </h2>
           <p className="mt-3 max-w-4xl text-slate-700 dark:text-slate-300">
-            Ne laissez pas l’eau sale vous affecter. Vous buvez de l’eau même lorsque vous vous brossez les dents
-            et que vous prenez un bain. Pouvez-vous imaginer que l’eau est sale, boueuse? Regardez de plus près,
-            l’eau dans laquelle vous vous baignez a beaucoup d’impuretés, de la terre et de la saleté à la rouille
-            sur les tuyaux, des algues stockées, et l’eau est remplie de particules en suspension.
+            Ne laissez pas l’eau sale vous affecter. Vous buvez de l’eau même lorsque vous
+            vous brossez les dents et que vous prenez un bain. Pouvez-vous imaginer que
+            l’eau est sale, boueuse? Regardez de plus près, l’eau dans laquelle vous vous
+            baignez a beaucoup d’impuretés, de la terre et de la saleté à la rouille sur
+            les tuyaux, des algues stockées, et l’eau est remplie de particules en
+            suspension.
           </p>
 
           <div className="mt-6 font-semibold">
-            <a href="/#techniques" className="inline-flex items-center gap-1 underline-offset-2 hover:underline">
+            <a
+              href="/#techniques"
+              className="inline-flex items-center gap-1 underline-offset-2 hover:underline"
+            >
               Voir technologies utilisées <ChevronRight className="h-4 w-4" />
             </a>
           </div>
@@ -207,15 +220,20 @@ export default function Page() {
           Chlore
         </h2>
         <p className="mt-3 max-w-4xl text-slate-700 dark:text-slate-300">
-          Pas de soucis avec l’effet du chlore. Votre eau possède une odeur désagréable? Si l’odeur de l’eau est
-          similaire à celle de l’eau de Javel, c’est parce que l’eau contient du chlore. L’eau municipale est
-          généralement traitée au chlore, qui peut servir de désinfectant pour prévenir les maladies d’origine
-          hydrique. Cependant, une chloration excessive peut donner à l’eau un goût et une odeur désagréables.
-          Il provoque également une décoloration de la peau et une irritation des yeux.
+          Pas de soucis avec l’effet du chlore. Votre eau possède une odeur désagréable?
+          Si l’odeur de l’eau est similaire à celle de l’eau de Javel, c’est parce que
+          l’eau contient du chlore. L’eau municipale est généralement traitée au chlore,
+          qui peut servir de désinfectant pour prévenir les maladies d’origine hydrique.
+          Cependant, une chloration excessive peut donner à l’eau un goût et une odeur
+          désagréables. Il provoque également une décoloration de la peau et une irritation
+          des yeux.
         </p>
 
         <div className="mt-6 font-semibold">
-          <a href="/#techniques" className="inline-flex items-center gap-1 underline-offset-2 hover:underline">
+          <a
+            href="/#techniques"
+            className="inline-flex items-center gap-1 underline-offset-2 hover:underline"
+          >
             Voir technologies utilisées <ChevronRight className="h-4 w-4" />
           </a>
         </div>
@@ -233,19 +251,27 @@ export default function Page() {
       {/* BACTÉRIES — (light gray) */}
       <section id="bacteries" aria-labelledby="bacteries-title" className="py-12">
         <div className="rounded-2xl border border-gray-100 bg-gray-50 p-6 sm:p-8">
-          <h2 id="bacteries-title" className="text-3xl font-bold tracking-tight text-slate-800">
+          <h2
+            id="bacteries-title"
+            className="text-3xl font-bold tracking-tight text-slate-800"
+          >
             Bactéries
           </h2>
           <p className="mt-3 max-w-4xl text-slate-700 dark:text-slate-300">
-            Ne laissez pas les bactéries compromettre la qualité de votre eau. Invisibles à l’œil nu, elles peuvent
-            pourtant provoquer des problèmes de santé, altérer le goût et l’odeur de l’eau et contaminer vos
-            boissons et repas. Grâce à la technologie UV LED avancée, l’eau est stérilisée instantanément,
-            éliminant jusqu’à 99,9 % des bactéries, virus et autres micro-organismes. Sans produits chimiques,
-            cette solution est écologique, économique et conserve à votre eau toute sa pureté naturelle.
+            Ne laissez pas les bactéries compromettre la qualité de votre eau. Invisibles à
+            l’œil nu, elles peuvent pourtant provoquer des problèmes de santé, altérer le
+            goût et l’odeur de l’eau et contaminer vos boissons et repas. Grâce à la
+            technologie UV LED avancée, l’eau est stérilisée instantanément, éliminant
+            jusqu’à 99,9 % des bactéries, virus et autres micro-organismes. Sans produits
+            chimiques, cette solution est écologique, économique et conserve à votre eau
+            toute sa pureté naturelle.
           </p>
 
           <div className="mt-6 font-semibold">
-            <a href="/#techniques" className="inline-flex items-center gap-1 underline-offset-2 hover:underline">
+            <a
+              href="/#techniques"
+              className="inline-flex items-center gap-1 underline-offset-2 hover:underline"
+            >
               Voir technologies utilisées <ChevronRight className="h-4 w-4" />
             </a>
           </div>
