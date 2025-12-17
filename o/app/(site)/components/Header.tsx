@@ -13,7 +13,7 @@ export default function Header() {
   const close = () => setOpen(false);
 
   const handleLoginClick = () => {
-    alert('La création de compte sera bientôt disponible.');
+    alert('La création de compte sera bientôt disponible. En attendant, contactez-nous à info@owater.ca');
   };
 
   return (
