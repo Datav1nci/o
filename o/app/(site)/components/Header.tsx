@@ -12,6 +12,10 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 
+  const handleLoginClick = () => {
+    alert('Connexion bientôt disponible.');
+  };
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -32,63 +36,76 @@ export default function Header() {
           <span className="sr-only">Ö Home</span>
         </Link>
 
-        {/* Desktop nav */}
-        <nav
-          aria-label="Navigation principale"
-          className="hidden md:flex items-center gap-6 text-sm text-gray-700"
-        >
-          <Link href="/" className="hover:text-blue-700" onClick={close}>
-            Accueil
-          </Link>
-
-          <Link
-            href="/filtre_pour_toute_la_maison"
-            prefetch
-            className="hover:text-blue-700"
-            onClick={close}
+        <div className="flex items-center gap-3">
+          {/* Desktop nav */}
+          <nav
+            aria-label="Navigation principale"
+            className="hidden md:flex items-center gap-6 text-sm text-gray-700"
           >
-            Filtre pour toute la maison
-          </Link>
+            <Link href="/" className="hover:text-blue-700" onClick={close}>
+              Accueil
+            </Link>
 
-          <Link
-            href="/filtre_pour_eau_potable"
-            prefetch
-            className="hover:text-blue-700"
-            onClick={close}
+            <Link
+              href="/filtre_pour_toute_la_maison"
+              prefetch
+              className="hover:text-blue-700"
+              onClick={close}
+            >
+              Filtre pour toute la maison
+            </Link>
+
+            <Link
+              href="/filtre_pour_eau_potable"
+              prefetch
+              className="hover:text-blue-700"
+              onClick={close}
+            >
+              Filtre pour eau potable
+            </Link>
+
+            <Link href="/techniques" className="hover:text-blue-700" onClick={close}>
+              Techniques
+            </Link>
+
+            <Link href="/schema" className="hover:text-blue-700" onClick={close}>
+              Schéma
+            </Link>
+
+            <Link
+              href="/#contact"
+              className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}
+              onClick={close}
+            >
+              Contactez-nous
+            </Link>
+          </nav>
+
+          {/* Desktop login button (top-right) */}
+          <button
+            type="button"
+            onClick={handleLoginClick}
+            className={cn(
+              buttonVariants({ variant: 'outline', size: 'sm' }),
+              'hidden md:inline-flex rounded-full'
+            )}
+            aria-label="Connexion"
           >
-            Filtre pour eau potable
-          </Link>
+            Connexion
+          </button>
 
-          <Link href="/techniques" className="hover:text-blue-700" onClick={close}>
-            Techniques
-          </Link>
-
-          {/* now a dedicated page */}
-          <Link href="/schema" className="hover:text-blue-700" onClick={close}>
-            Schéma
-          </Link>
-
-          {/* always scrolls to the footer on the homepage */}
-          <Link
-            href="/#contact"
-            className={cn(buttonVariants({ variant: 'default' }), 'rounded-full')}
-            onClick={close}
+          {/* Mobile toggle */}
+          <button
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen(v => !v)}
+            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white"
           >
-            Contactez-nous
-          </Link>
-        </nav>
-
-        {/* Mobile toggle */}
-        <button
-          type="button"
-          aria-label="Ouvrir le menu"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          onClick={() => setOpen(v => !v)}
-          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile panel */}
@@ -131,7 +148,6 @@ export default function Header() {
                 Techniques
               </Link>
             </li>
-            {/* dedicated page */}
             <li>
               <Link href="/schema" onClick={close} className="block hover:text-blue-700">
                 Schéma
@@ -139,7 +155,19 @@ export default function Header() {
             </li>
           </ul>
 
-          <div className="mt-4">
+          <div className="mt-4 space-y-2">
+            <button
+              type="button"
+              onClick={() => {
+                close();
+                handleLoginClick();
+              }}
+              className={cn(buttonVariants({ variant: 'outline' }), 'w-full rounded-full')}
+              aria-label="Connexion"
+            >
+              Connexion
+            </button>
+
             <Link
               href="/#contact"
               onClick={close}
