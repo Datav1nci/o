@@ -34,7 +34,7 @@ function CardLink({
           src={img}
           alt={alt}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          className="object-cover object-left transition-transform duration-300 group-hover:scale-[1.02]"
           sizes="(min-width:1024px) 360px, 90vw"
         />
       </div>
