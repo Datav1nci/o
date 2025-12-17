@@ -29,12 +29,12 @@ function CardLink({
       href={href}
       className="group block rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
     >
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-slate-50 p-3 dark:bg-gray-950">
         <Image
           src={img}
           alt={alt}
           fill
-          className="object-cover object-left transition-transform duration-300 group-hover:scale-[1.02]"
+          className="object-contain transition-transform duration-300 group-hover:scale-[1.02]"
           sizes="(min-width:1024px) 360px, 90vw"
         />
       </div>
