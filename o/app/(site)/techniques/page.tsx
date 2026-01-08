@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 
 export default function TechniquesPage() {
   return (
-    <main>
+    <main className="container mx-auto max-w-7xl px-4 py-8">
       {/* Hero header using Technique_header.webp */}
       <section
         className="
-          relative h-[44vh] min-h-[300px] w-full overflow-hidden
+          relative h-[44vh] min-h-[300px] w-full overflow-hidden rounded-2xl border border-gray-200 shadow-sm dark:border-gray-800
         "
         aria-label="Bannière des techniques utilisées"
       >
@@ -27,7 +27,7 @@ export default function TechniquesPage() {
           fill
           priority
           className="object-cover"
-          sizes="100vw"
+          sizes="(min-width: 1280px) 1280px, 100vw"
         />
         <div className="absolute inset-0 bg-black/35" />
         <div className="relative z-10 flex h-full items-center justify-center px-4">
@@ -38,7 +38,7 @@ export default function TechniquesPage() {
       </section>
 
       {/* Content */}
-      <div className="container mx-auto max-w-6xl px-4 py-16 space-y-20">
+      <div className="py-16 space-y-20">
         <Technique
           id="ion-exchange"
           img="/images/tech_ion_exchange.webp"

@@ -63,6 +63,7 @@ export default function Hero() {
             height={40}
             className="h-auto w-[150px] sm:w-[170px]"
             priority
+            sizes="(max-width: 640px) 150px, 170px"
           />
         </div>
       </div>
@@ -85,6 +86,7 @@ export default function Hero() {
               "absolute inset-0 object-cover transition-opacity duration-1000",
               index === current ? "opacity-100" : "opacity-0"
             )}
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         ))}
 
