@@ -23,7 +23,7 @@ export default function OP1Page() {
             alt="Système de filtration pour l’eau potable"
             fill
             priority
-            className="object-cover"
+            className="object-contain"
             sizes="(min-width:1280px) 1200px, 100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/25 to-black/25" />
@@ -63,7 +63,7 @@ export default function OP1Page() {
             src="/images/filter_devices_hero.webp"
             alt="Affiche produit Ö P1 (espace réservé)"
             fill
-            className="object-cover"
+            className="object-contain"
             sizes="(min-width:1024px) 520px, 90vw"
           />
           {/* Slogan line like in the mock */}
@@ -195,7 +195,7 @@ export default function OP1Page() {
             src="/images/filter_devices_hero.webp"
             alt="Photo d’installation sous évier (espace réservé)"
             fill
-            className="object-cover"
+            className="object-contain"
             sizes="(min-width:1024px) 640px, 100vw"
           />
         </div>

@@ -53,7 +53,7 @@ export default function Page() {
             priority
             width={1200}
             height={800}
-            className="h-auto w-full object-cover"
+            className="h-auto w-full object-contain"
             sizes="(min-width: 1024px) 640px, 100vw"
           />
         </div>
@@ -85,7 +85,7 @@ export default function Page() {
                   src="/images/filter_devices_hero.webp"
                   alt={`Illustration Ö SilkySoft ${i} (espace réservé)`}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="160px"
                 />
               </div>
@@ -128,7 +128,7 @@ export default function Page() {
               src="/images/filter_devices_hero.webp"
               alt="Coupe du produit Ö SilkySoft (espace réservé)"
               fill
-              className="object-cover"
+              className="object-contain"
               sizes="(min-width: 1024px) 360px, 80vw"
             />
           </div>

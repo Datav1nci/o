@@ -50,7 +50,7 @@ export default function Page() {
           aria-label="Visuel Le Grand (illustration)"
           className="relative overflow-hidden rounded-2xl border border-gray-200 shadow-sm dark:border-gray-800"
         >
-          <div className="aspect-[4/5] w-full bg-[url('/images/filter_devices_hero.webp')] bg-cover bg-center bg-no-repeat bg-fixed" />
+          <div className="aspect-[4/5] w-full bg-[url('/images/filter_devices_hero.webp')] bg-contain bg-center bg-no-repeat bg-fixed" />
           <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-black/5 dark:ring-white/10" />
         </div>
 

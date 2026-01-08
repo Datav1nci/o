@@ -43,7 +43,7 @@ export default function Page() {
             priority
             width={1200}
             height={900}
-            className="h-auto w-full object-cover"
+            className="h-auto w-full object-contain"
             sizes="(min-width: 1024px) 640px, 100vw"
           />
         </div>
@@ -203,7 +203,7 @@ export default function Page() {
             src="/images/filter_devices_hero.webp"
             alt="Illustration de l’installation (espace réservé)"
             fill
-            className="object-cover"
+            className="object-contain"
             sizes="(min-width: 1024px) 640px, 100vw"
           />
         </div>
@@ -212,7 +212,7 @@ export default function Page() {
             src="/images/filter_devices_hero.webp"
             alt="Exemple d’installation (espace réservé)"
             fill
-            className="object-cover"
+            className="object-contain"
             sizes="(min-width: 1024px) 640px, 100vw"
           />
         </div>

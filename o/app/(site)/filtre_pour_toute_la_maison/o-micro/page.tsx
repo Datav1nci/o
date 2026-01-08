@@ -43,7 +43,7 @@ export default function Page() {
             priority
             width={1200}
             height={900}
-            className="h-auto w-full object-cover"
+            className="h-auto w-full object-contain"
             sizes="(min-width: 1024px) 640px, 100vw"
           />
         </div>
@@ -67,14 +67,14 @@ export default function Page() {
           <div className="mt-5">
             <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Applications</h3>
             <div className="mt-2 grid grid-cols-4 gap-3 sm:max-w-xl">
-              {["Chauffe-eau","Machines à laver","Pommes de douche","Chaudières murales"].map((label, i) => (
+              {["Chauffe-eau", "Machines à laver", "Pommes de douche", "Chaudières murales"].map((label, i) => (
                 <figure key={i} className="text-center">
                   <div className="relative mx-auto aspect-square w-20 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800">
                     <Image
                       src="/images/filter_devices_hero.webp"
                       alt={label}
                       fill
-                      className="object-cover"
+                      className="object-contain"
                       sizes="84px"
                     />
                   </div>
@@ -168,7 +168,7 @@ export default function Page() {
             src="/images/filter_devices_hero.webp"
             alt="Illustration de l’installation (espace réservé)"
             fill
-            className="object-cover"
+            className="object-contain"
             sizes="(min-width: 1024px) 1200px, 100vw"
           />
         </div>

@@ -57,7 +57,7 @@ export default function Page() {
             alt="De l’eau filtrée pour toute la maison"
             fill
             priority
-            className="object-cover"
+            className="object-contain"
             sizes="(min-width:1280px) 1200px, 100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/30" />

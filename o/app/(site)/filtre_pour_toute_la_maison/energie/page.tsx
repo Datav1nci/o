@@ -32,7 +32,7 @@ export default function EnergiePage() {
             src="/images/O_Energie.webp"
             alt="Ö Energie – visuel produit"
             fill
-            className="object-cover"
+            className="object-contain"
             sizes="(min-width:1024px) 520px, 90vw"
           />
         </div>
@@ -244,7 +244,7 @@ export default function EnergiePage() {
             src="/images/drinking.png"
             alt="Photo d’installation"
             fill
-            className="object-cover"
+            className="object-contain"
           />
         </div>
       </div>

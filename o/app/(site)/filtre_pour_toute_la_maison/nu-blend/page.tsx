@@ -53,7 +53,7 @@ export default function Page() {
             priority
             width={1200}
             height={800}
-            className="h-auto w-full object-cover"
+            className="h-auto w-full object-contain"
             sizes="(min-width: 1024px) 640px, 100vw"
           />
         </div>
@@ -93,7 +93,7 @@ export default function Page() {
                   src="/images/filter_devices_hero.webp"
                   alt={`Illustration Nü Blend ${i} (espace réservé)`}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="160px"
                 />
               </div>
@@ -110,7 +110,7 @@ export default function Page() {
             src="/images/filter_devices_hero.webp"
             alt="Nü Blend — coupe du produit (espace réservé)"
             fill
-            className="object-cover"
+            className="object-contain"
             sizes="(min-width: 1024px) 480px, 80vw"
           />
           <span className="pointer-events-none absolute bottom-3 left-3 rounded-lg bg-blue-700 px-3 py-1 text-sm font-semibold text-white">

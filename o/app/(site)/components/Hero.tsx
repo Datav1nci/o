@@ -10,7 +10,7 @@ const heroImages = [
   { src: "/images/Hero_second_image_anti_sediment.webp", alt: "Filtre anti-sédiment" },
   { src: "/images/hero_third_image_filtre_0_5_micron.webp", alt: "Filtre 0.5 micron" },
   { src: "/images/Hero_section_trio_filters.webp", alt: "Trio filtre" },
-  { src: "/images/Hero_section_station_anti_calcaire.webp", alt: "Anti calcaire" },    
+  { src: "/images/Hero_section_station_anti_calcaire.webp", alt: "Anti calcaire" },
 ];
 
 export default function Hero() {
@@ -83,7 +83,7 @@ export default function Hero() {
             fill
             priority={index === 0}
             className={cn(
-              "absolute inset-0 object-cover transition-opacity duration-1000",
+              "absolute inset-0 object-contain transition-opacity duration-1000",
               index === current ? "opacity-100" : "opacity-0"
             )}
             sizes="(max-width: 768px) 100vw, 50vw"
